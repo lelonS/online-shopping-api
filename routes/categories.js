@@ -1,6 +1,6 @@
 import Router from 'express';
 import mongoose, { Schema } from 'mongoose';
-import { getErrorMessage, getNotFoundMessage } from '../errors/error-messages.js';
+import { errorResponse, notFoundResponse } from '../errors/error-messages.js';
 
 
 const categoriesRouter = Router();
@@ -25,7 +25,7 @@ categoriesRouter.post('/', async (req, res) => {
     })
     .catch((err) => {
       // Save failed. Get the status code and send the error message
-      const errorMessage = getErrorMessage(err);
+      const errorMessage = errorResponse(err);
       res.status(errorMessage.status).send({ message: errorMessage.message });
     });
 });
@@ -40,7 +40,7 @@ categoriesRouter.get('/', async (req, res) => {
     })
     .catch((err) => {
       // Get failed. Get the status code and send the error message
-      const errorMessage = getErrorMessage(err);
+      const errorMessage = errorResponse(err);
       res.status(errorMessage.status).send({ message: errorMessage.message });
     });
 });
@@ -55,13 +55,13 @@ categoriesRouter.get('/:id', async (req, res) => {
         res.send(result);
       } else {
         // Not found
-        const errorMessage = getNotFoundMessage();
+        const errorMessage = notFoundResponse();
         res.status(errorMessage.status).send({ message: errorMessage.message });
       }
     })
     .catch((err) => {
       // Get failed. Get the status code and send the error message
-      const errorMessage = getErrorMessage(err);
+      const errorMessage = errorResponse(err);
       res.status(errorMessage.status).send({ message: errorMessage.message });
     });
 });
@@ -76,13 +76,13 @@ categoriesRouter.put('/:id', async (req, res) => {
         res.send(result);
       } else {
         // Not found
-        const errorMessage = getNotFoundMessage();
+        const errorMessage = notFoundResponse();
         res.status(errorMessage.status).send({ message: errorMessage.message });
       }
     })
     .catch((err) => {
       // Update failed. Get the status code and send the error message
-      const errorMessage = getErrorMessage(err);
+      const errorMessage = errorResponse(err);
       res.status(errorMessage.status).send({ message: errorMessage.message });
     });
 });
@@ -97,13 +97,13 @@ categoriesRouter.delete('/:id', async (req, res) => {
         res.send(result);
       } else {
         // Not found
-        const errorMessage = getNotFoundMessage();
+        const errorMessage = notFoundResponse();
         res.status(errorMessage.status).send({ message: errorMessage.message });
       }
     })
     .catch((err) => {
       // Delete failed. Get the status code and send the error message
-      const errorMessage = getErrorMessage(err);
+      const errorMessage = errorResponse(err);
       res.status(errorMessage.status).send({ message: errorMessage.message });
     });
 });
