@@ -14,3 +14,15 @@ api.listen(3000, () => {
 // Routes
 import categoriesRouter from './routes/categories.js';
 api.use('/api/categories', categoriesRouter);
+
+import productsRouter from './routes/products.js';
+api.use('/api/products', productsRouter);
+
+import customersRouter from './routes/customers.js';
+api.use('/api/customers', customersRouter);
+
+import ordersRouter from './routes/orders.js';
+api.use('/api/orders', ordersRouter);
+
+import cartsRouter from './routes/carts.js';
+api.use('/api/carts', cartsRouter);
