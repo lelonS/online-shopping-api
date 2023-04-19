@@ -69,7 +69,7 @@ categoriesRouter.get('/:id', async (req, res) => {
 // Update a category by id
 categoriesRouter.put('/:id', async (req, res) => {
   // Update the category by id
-  Categories.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  Categories.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
     .then((result) => {
       // Update successful
       if (result) {

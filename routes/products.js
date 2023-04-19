@@ -77,7 +77,7 @@ productsRouter.get('/:id', async (req, res) => {
 // Update a product by id
 productsRouter.put('/:id', async (req, res) => {
   // Update the product by id
-  Products.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  Products.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
     .then((result) => {
       // Update successful
       if (result) {
