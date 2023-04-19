@@ -1,5 +1,20 @@
 # Documentation
 
+Quick reference
+
+* [Overview](#overview)
+* [Authentication and Authorization](#authentication-and-authorization)
+* [Endpoint Structure](#endpoint-structure)
+* [Request Parameters](#request-parameters)
+* [Request Headers](#request-headers)
+* [Request Examples](#request-examples)
+* [Response Structure](#response-structure)
+* [Response Examples](#response-examples)
+* [Error Handling](#error-handling)
+* [Rate Limiting and Throttling](#rate-limiting-and-throttling)
+
+---
+
 ## Overview
 
 *Begin with a brief overview of the API, explaining its purpose, benefits, and target audience. This section should give readers a clear understanding of what the API does and why it exists.*
