@@ -1,7 +1,7 @@
 import Router from 'express';
 import mongoose, { Schema } from 'mongoose';
-import { errorResponse, notFoundResponse } from '../errors/error-messages.js';
-import { emailValidator } from '../errors/custom-validators.js';
+import { errorResponse, notFoundResponse } from '../utils/error-messages.js';
+import { emailValidator } from '../utils/custom-validators.js';
 
 
 const customersRouter = Router();

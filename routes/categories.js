@@ -1,6 +1,6 @@
 import Router from 'express';
 import mongoose, { Schema } from 'mongoose';
-import { errorResponse, notFoundResponse } from '../errors/error-messages.js';
+import { errorResponse, notFoundResponse } from '../utils/error-messages.js';
 
 
 const categoriesRouter = Router();

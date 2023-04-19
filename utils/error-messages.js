@@ -12,7 +12,7 @@ export function errorResponse(error) {
   console.log('Error JSON\n', JSON.stringify(error, null, 2), '\n');
 
   // Append the error to the error log
-  fs.appendFileSync('./errors/error.log', JSON.stringify(error, null, 2) + '\n');
+  fs.appendFileSync('./utils/error.log', JSON.stringify(error, null, 2) + '\n');
 
 
   // Check error
