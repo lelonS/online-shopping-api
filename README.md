@@ -2,7 +2,7 @@
 
 https://github.com/lelonS/online-shopping-api
 
-[Documentation](docs/documentation.md)
+[Documentation](docs/index.md)
 
 ## Overview
 
