@@ -26,7 +26,7 @@ categoriesRouter.post('/', async (req, res) => {
     .catch((err) => {
       // Save failed. Get the status code and send the error message
       const errorMessage = errorResponse(err);
-      res.status(errorMessage.status).send({ message: errorMessage.message });
+      res.status(errorMessage.status).send(errorMessage.response);
     });
 });
 
@@ -41,7 +41,7 @@ categoriesRouter.get('/', async (req, res) => {
     .catch((err) => {
       // Get failed. Get the status code and send the error message
       const errorMessage = errorResponse(err);
-      res.status(errorMessage.status).send({ message: errorMessage.message });
+      res.status(errorMessage.status).send(errorMessage.response);
     });
 });
 
@@ -56,13 +56,13 @@ categoriesRouter.get('/:id', async (req, res) => {
       } else {
         // Not found
         const errorMessage = notFoundResponse();
-        res.status(errorMessage.status).send({ message: errorMessage.message });
+        res.status(errorMessage.status).send(errorMessage.response);
       }
     })
     .catch((err) => {
       // Get failed. Get the status code and send the error message
       const errorMessage = errorResponse(err);
-      res.status(errorMessage.status).send({ message: errorMessage.message });
+      res.status(errorMessage.status).send(errorMessage.response);
     });
 });
 
@@ -77,13 +77,13 @@ categoriesRouter.put('/:id', async (req, res) => {
       } else {
         // Not found
         const errorMessage = notFoundResponse();
-        res.status(errorMessage.status).send({ message: errorMessage.message });
+        res.status(errorMessage.status).send(errorMessage.response);
       }
     })
     .catch((err) => {
       // Update failed. Get the status code and send the error message
       const errorMessage = errorResponse(err);
-      res.status(errorMessage.status).send({ message: errorMessage.message });
+      res.status(errorMessage.status).send(errorMessage.response);
     });
 });
 
@@ -98,13 +98,13 @@ categoriesRouter.delete('/:id', async (req, res) => {
       } else {
         // Not found
         const errorMessage = notFoundResponse();
-        res.status(errorMessage.status).send({ message: errorMessage.message });
+        res.status(errorMessage.status).send(errorMessage.response);
       }
     })
     .catch((err) => {
       // Delete failed. Get the status code and send the error message
       const errorMessage = errorResponse(err);
-      res.status(errorMessage.status).send({ message: errorMessage.message });
+      res.status(errorMessage.status).send(errorMessage.response);
     });
 });
 
