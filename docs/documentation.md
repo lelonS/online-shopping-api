@@ -2,7 +2,6 @@
 
 Quick reference
 
-* [Overview](#overview)
 * [Authentication and Authorization](#authentication-and-authorization)
 * [Endpoint Structure](#endpoint-structure)
 * [Request Parameters](#request-parameters)
@@ -15,9 +14,6 @@ Quick reference
 
 ---
 
-## Overview
-
-*Begin with a brief overview of the API, explaining its purpose, benefits, and target audience. This section should give readers a clear understanding of what the API does and why it exists.*
 
 
 ## Authentication and Authorization
