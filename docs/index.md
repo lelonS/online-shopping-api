@@ -66,7 +66,7 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 |---|---|---|---|---|---|
 |name|String|The name of the product|Yes|Yes|None|
 |description|String|The description of the product|No|No|None|
-|price|Number|The price of the product|Yes|No|min: 1|
+|price|Number|The price of the product|Yes|No|min: 0|
 |category|String|The id of the category|No|No|None|
 
 ### Customers
