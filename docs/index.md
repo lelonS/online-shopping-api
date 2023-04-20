@@ -55,7 +55,7 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
-|name|String|The name of the category|Yes|Yes|None|
+|name|String|The name of the category|Yes|Yes| |
 
 
 ### Products
@@ -64,10 +64,10 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
-|name|String|The name of the product|Yes|Yes|None|
-|description|String|The description of the product|No|No|None|
+|name|String|The name of the product|Yes|Yes| |
+|description|String|The description of the product|No|No| |
 |price|Number|The price of the product|Yes|No|min: 0|
-|category|String|The id of the category|No|No|None|
+|category|String|The id of the category|No|No| |
 
 ### Customers
 
@@ -75,9 +75,9 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
-|fullName|String|The full name of the customer|Yes|No|None|
+|fullName|String|The full name of the customer|Yes|No| |
 |email|String|The email of the customer|Yes|Yes|regex `/^[\w-\.]+@([\w-]+\.?)+[\w-]{2,4}$/`|
-|password|String|The password of the customer|Yes|No|None|
+|password|String|The password of the customer|Yes|No| |
 
 ### Carts
 
@@ -85,7 +85,7 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
-|customer|String|The id of the customer|Yes|No|None|
+|customer|String|The id of the customer|Yes|No| |
 |products|Array|The products in the cart and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|No|No|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
 
 ### Orders
@@ -94,8 +94,8 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
-|customer|String|The id of the customer|Yes|No|None|
-|shippingAddress|String|The shipping address of the customer|Yes|No|None|
+|customer|String|The id of the customer|Yes|No| |
+|shippingAddress|String|The shipping address of the customer|Yes|No| |
 |products|Array|The products in the order and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|No|No|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
 
 
