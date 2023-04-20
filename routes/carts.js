@@ -6,7 +6,7 @@ import { errorResponse, notFoundResponse } from '../utils/error-messages.js';
 const cartsRouter = Router();
 
 const cartSchema = new Schema({
-  customer: { type: Schema.Types.ObjectId, ref: 'Customers' },
+  customer: { type: Schema.Types.ObjectId, ref: 'Customers', required: true },
   products: [{
     product: { type: Schema.Types.ObjectId, ref: 'Products' },
     quantity: { type: Number, required: true, min: 1 }
