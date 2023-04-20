@@ -18,19 +18,90 @@ Quick reference
 
 ## Authentication and Authorization
 
-*If the API requires authentication or authorization, provide clear instructions on how to obtain the necessary credentials, such as API keys, tokens, or OAuth. Include examples of how to use these credentials in API requests.*
+To access the API, you must have a mongoDB connection string. To use your connection string you put it in the `secrets.js` file. The easiest way to do this is to remove the `.template` part from [secrets.js.template](../secrets.js.template).
 
 ## Endpoint Structure
 
-*Clearly describe the base URL and structure of the endpoints, including the HTTP methods supported (GET, POST, PUT, DELETE, etc.). Organize endpoints logically, grouping related endpoints together.*
+**Base URL:** `https://localhost:3000/api`
+
+**Endpoints:**
+
+* `GET /{collection}` - Get all documents in a collection
+* `GET /{collection}/{id}` - Get a single document by ID
+* `POST /{collection}` - Create a new document
+* `PUT /{collection}/{id}` - Update a document
+* `DELETE /{collection}/{id}` - Delete a document
+
+**Collections:**
+
+* categories
+* products
+* customers
+* carts
+* orders
+
 
 ## Request Parameters
 
-*For each endpoint, list all required and optional parameters, their data types, and a brief description of their purpose. Include any constraints or validation rules for the parameters.*
+If you send a field that is not in the schema, it will be ignored.
+
+When using `PUT` requests, you only need to send the fields you want to update. For example, if you want to update the name of a product, you only need to send the `name` field.
+
+`PUT` requests are also validated.
+
+### Categories
+
+`POST http://localhost:3000/api/categories`
+
+|Property|Type|Description|Required|Validation|
+|---|---|---|---|---|
+|name|String|The name of the category|Yes|None|
+
+
+### Products
+
+`POST http://localhost:3000/api/products`
+
+|Property|Type|Description|Required|Validation|
+|---|---|---|---|---|
+|name|String|The name of the product|Yes|None|
+|description|String|The description of the product|No|None|
+|price|Number|The price of the product|Yes|min: 1|
+|category|String|The id of the category|No|None|
+
+### Customers
+
+`POST http://localhost:3000/api/customers`
+
+|Property|Type|Description|Required|Validation|
+|---|---|---|---|---|
+|fullName|String|The full name of the customer|Yes|None|
+|email|String|The email of the customer|Yes|In the format of [word]@[word].[word]|
+|password|String|The password of the customer|Yes|None|
+
+### Carts
+
+`POST http://localhost:3000/api/carts`
+
+|Property|Type|Description|Required|Validation|
+|---|---|---|---|---|
+|customer|String|The id of the customer|Yes|None|
+|products|Array|The products in the cart and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|Yes|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
+
+### Orders
+
+`POST http://localhost:3000/api/orders`
+
+|Property|Type|Description|Required|Validation|
+|---|---|---|---|---|
+|customer|String|The id of the customer|Yes|None|
+|shippingAddress|String|The shipping address of the customer|Yes|None|
+|products|Array|The products in the order and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|Yes|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
+
 
 ## Request Headers
 
-*If applicable, provide a list of required and optional headers for each endpoint, along with their purpose and valid values.*
+None
 
 ## Request Examples
 
@@ -38,7 +109,77 @@ Quick reference
 
 ## Response Structure
 
-*Describe the structure of the API response, including the format (JSON, XML, etc.) and the various elements within the response. Explain the meaning of each element and any possible values.*
+Only `GET` requests populate fields with data from other collections. For example, the `GET` request for a single product will populate the `category` field with the category document that matches the `category` field in the product document.
+
+`POST`, `PUT`, and `DELETE` requests does not populate fields with data from other collections, they only return the id in that field.
+
+`POST`: Returns the newly created document
+
+`GET` collection: Returns an array of documents
+
+`PUT`: Returns the updated document
+
+`DELETE`: Returns the deleted document
+
+`GET` single document: Returns the document
+
+### Categories
+
+`GET http://localhost:3000/api/categories/{id}`
+
+|Property|Type|Description|
+|---|---|---|
+|_id|String|The id of the category|
+|name|String|The name of the category|
+|__v|Number|The version of the category|
+
+### Products
+
+`GET http://localhost:3000/api/products/{id}`
+
+|Property|Type|Description|
+|---|---|---|
+|_id|String|The id of the product|
+|name|String|The name of the product|
+|description|String|The description of the product|
+|price|Number|The price of the product|
+|category|Object|The category of the product ([See Categories](#categories-1))|
+|__v|Number|The version of the product|
+
+### Customers
+
+`GET http://localhost:3000/api/customers/{id}`
+
+|Property|Type|Description|
+|---|---|---|
+|_id|String|The id of the customer|
+|fullName|String|The full name of the customer|
+|email|String|The email of the customer|
+|password|String|The password of the customer|
+|__v|Number|The version of the customer|
+
+### Carts
+
+`GET http://localhost:3000/api/carts/{id}`
+
+|Property|Type|Description|
+|---|---|---|
+|_id|String|The id of the cart|
+|customer|Object|The customer of the cart ([See Customers](#customers-1))|
+|products|Array|The products in the cart and quantity. The array includes objects with the properties `{product: Object, quantity: 2}`. ([See Products](#products-1) for `product`)|
+|__v|Number|The version of the cart|
+
+### Orders
+
+`GET http://localhost:3000/api/orders/{id}`
+
+|Property|Type|Description|
+|---|---|---|
+|_id|String|The id of the order|
+|customer|Object|The customer of the order ([See Customers](#customers-1))|
+|shippingAddress|String|The shipping address of the customer|
+|products|Array|The products in the order and quantity. The array includes objects with the properties `{product: Object, quantity: 2}`. ([See Products](#products-1) for `product`)|
+|__v|Number|The version of the order|
 
 ## Response Examples
 
