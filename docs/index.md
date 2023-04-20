@@ -76,7 +76,7 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
 |fullName|String|The full name of the customer|Yes|No|None|
-|email|String|The email of the customer|Yes|Yes|In the format of [word]@[word].[word]|
+|email|String|The email of the customer|Yes|Yes|regex `/^[\w-\.]+@([\w-]+\.?)+[\w-]{2,4}$/`|
 |password|String|The password of the customer|Yes|No|None|
 
 ### Carts

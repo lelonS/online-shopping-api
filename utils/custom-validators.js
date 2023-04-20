@@ -1,10 +1,7 @@
 
 function validateEmail(email) {
-  // Simple email validation regex [numbers and letters][one @][numbers and letters][one .][numbers and letters]
-  // valid email: example@example.com
-  // invalid email: example@example
-  // invalid email: example.ex@example.com
-  const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+  // Simple email validation regex
+  const emailRegex = /^[\w-\.]+@([\w-]+\.?)+[\w-]{2,4}$/;
   return emailRegex.test(email);
 }
 
