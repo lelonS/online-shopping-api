@@ -53,50 +53,50 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 
 `POST http://localhost:3000/api/categories`
 
-|Property|Type|Description|Required|Validation|
-|---|---|---|---|---|
-|name|String|The name of the category|Yes|None|
+|Property|Type|Description|Required|Unique|Validation|
+|---|---|---|---|---|---|
+|name|String|The name of the category|Yes|Yes|None|
 
 
 ### Products
 
 `POST http://localhost:3000/api/products`
 
-|Property|Type|Description|Required|Validation|
-|---|---|---|---|---|
-|name|String|The name of the product|Yes|None|
-|description|String|The description of the product|No|None|
-|price|Number|The price of the product|Yes|min: 1|
-|category|String|The id of the category|No|None|
+|Property|Type|Description|Required|Unique|Validation|
+|---|---|---|---|---|---|
+|name|String|The name of the product|Yes|Yes|None|
+|description|String|The description of the product|No|No|None|
+|price|Number|The price of the product|Yes|No|min: 1|
+|category|String|The id of the category|No|No|None|
 
 ### Customers
 
 `POST http://localhost:3000/api/customers`
 
-|Property|Type|Description|Required|Validation|
-|---|---|---|---|---|
-|fullName|String|The full name of the customer|Yes|None|
-|email|String|The email of the customer|Yes|In the format of [word]@[word].[word]|
-|password|String|The password of the customer|Yes|None|
+|Property|Type|Description|Required|Unique|Validation|
+|---|---|---|---|---|---|
+|fullName|String|The full name of the customer|Yes|No|None|
+|email|String|The email of the customer|Yes|Yes|In the format of [word]@[word].[word]|
+|password|String|The password of the customer|Yes|No|None|
 
 ### Carts
 
 `POST http://localhost:3000/api/carts`
 
-|Property|Type|Description|Required|Validation|
-|---|---|---|---|---|
-|customer|String|The id of the customer|Yes|None|
-|products|Array|The products in the cart and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|Yes|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
+|Property|Type|Description|Required|Unique|Validation|
+|---|---|---|---|---|---|
+|customer|String|The id of the customer|Yes|No|None|
+|products|Array|The products in the cart and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|Yes|No|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
 
 ### Orders
 
 `POST http://localhost:3000/api/orders`
 
-|Property|Type|Description|Required|Validation|
-|---|---|---|---|---|
-|customer|String|The id of the customer|Yes|None|
-|shippingAddress|String|The shipping address of the customer|Yes|None|
-|products|Array|The products in the order and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|Yes|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
+|Property|Type|Description|Required|Unique|Validation|
+|---|---|---|---|---|---|
+|customer|String|The id of the customer|Yes|No|None|
+|shippingAddress|String|The shipping address of the customer|Yes|No|None|
+|products|Array|The products in the order and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|Yes|No|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
 
 
 ## Request Headers
