@@ -109,6 +109,8 @@ None
 
 `POST http://localhost:3000/api/orders`
 
+**Request Body:**
+
 ```json
 {
   "customer": "64402a45b7bda38e911ab0ed",
@@ -133,6 +135,8 @@ None
 `PUT http://localhost:3000/api/orders/644110ee8bad225fc5643efc`
 
 Only the fields you send will be updated. In this example, only the `shippingAddress` field will be updated.
+
+**Request Body:**
 
 ```json
 {
