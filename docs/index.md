@@ -86,7 +86,7 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
 |customer|String|The id of the customer|Yes|No|None|
-|products|Array|The products in the cart and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|Yes|No|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
+|products|Array|The products in the cart and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|No|No|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
 
 ### Orders
 
@@ -96,7 +96,7 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 |---|---|---|---|---|---|
 |customer|String|The id of the customer|Yes|No|None|
 |shippingAddress|String|The shipping address of the customer|Yes|No|None|
-|products|Array|The products in the order and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|Yes|No|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
+|products|Array|The products in the order and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|No|No|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
 
 
 ## Request Headers
