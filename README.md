@@ -1,10 +1,12 @@
-# online-shopping-api
+# ONLINE SHOPPING API
 
-[Documentation](docs/index.md)
+### [Go to the API Documentation](/docs/index.md)
 
 ## Overview
 
-*Begin with a brief overview of the API, explaining its purpose, benefits, and target audience. This section should give readers a clear understanding of what the API does and why it exists.*
+This is a RESTful API for an online shopping application. It is built with Node.js, Express, and MongoDB.
+
+The purpose of this API is to provide a backend for an online shopping application. The API provides endpoints to create, read, update, and delete products, categories, customers, carts, and orders.
 
 ## Getting Started
 
@@ -14,22 +16,29 @@
 git clone https://github.com/lelonS/online-shopping-api.git
 ```
 
-2. Install dependencies
+2. Navigate to the project directory
+
+```bash
+cd online-shopping-api
+```
+
+3. Install dependencies
 
 ```bash
 npm install
 ```
 
-3. Create secrets.js file in the root directory and add you mongodb connection string. (See [secrets.js.template](secrets.js.template))
+4. Add connection string
+    1. Remove the `.template` part from [secrets.js.template](secrets.js.template)
+    2. Add your connection string to the `secrets.js` file
 
-
-4. Run the API
+5. Run the API
 
 ```bash	
 node api.js
 ```
 
-5. Make a request to the API
+6. Make a request to the API
 
 ```bash
 curl http://localhost:3000/api/products
