@@ -9,7 +9,7 @@ const categorySchema = new Schema({
   name: { type: String, required: true, unique: true }
 });
 
-const Categories = mongoose.model('Categories', categorySchema);
+export const Categories = mongoose.model('Categories', categorySchema);
 
 
 // Post a new category

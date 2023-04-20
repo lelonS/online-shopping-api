@@ -12,7 +12,7 @@ const productSchema = new Schema({
   category: { type: Schema.Types.ObjectId, ref: 'Categories' }
 });
 
-const Products = mongoose.model('Products', productSchema);
+export const Products = mongoose.model('Products', productSchema);
 
 
 // Post a new product

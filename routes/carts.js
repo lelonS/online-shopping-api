@@ -14,7 +14,7 @@ const cartSchema = new Schema({
   lastUpdate: { type: Date, default: Date.now }
 });
 
-const Carts = mongoose.model('Carts', cartSchema);
+export const Carts = mongoose.model('Carts', cartSchema);
 
 
 // Post a new cart

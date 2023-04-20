@@ -15,7 +15,7 @@ const orderSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-const Orders = mongoose.model('Orders', orderSchema);
+export const Orders = mongoose.model('Orders', orderSchema);
 
 
 // Post a new order

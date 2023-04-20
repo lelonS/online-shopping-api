@@ -17,7 +17,7 @@ const customerSchema = new Schema({
   password: { type: String, required: true }
 });
 
-const Customers = mongoose.model('Customers', customerSchema);
+export const Customers = mongoose.model('Customers', customerSchema);
 
 
 // Post a new customer
