@@ -154,15 +154,17 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 `POST`, `PUT`, and `DELETE` requests does not populate fields with data from other collections, they only return the id in that field.
 
-`POST`: Returns the newly created document
+**Success Response:**
 
-`GET` collection: Returns an array of documents
+`POST`: Returns the newly created document. `Status code: 201`
 
-`PUT`: Returns the updated document
+`GET` collection: Returns an array of documents. `Status code: 200`
 
-`DELETE`: Returns the deleted document
+`PUT`: Returns the updated document. `Status code: 200`
 
-`GET` single document: Returns the document
+`DELETE`: Returns the deleted document. `Status code: 200`
+
+`GET` single document: Returns the document. `Status code: 200`
 
 ### Categories
 
