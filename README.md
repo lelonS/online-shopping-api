@@ -22,7 +22,7 @@ git clone https://github.com/lelonS/online-shopping-api.git
 npm install
 ```
 
-3. Create secrets.js file in the root directory and add you mongodb connection string. (See [secrets.js.example](secrets.js.example))
+3. Create secrets.js file in the root directory and add you mongodb connection string. (See [secrets.js.example](secrets.js.template))
 
 
 4. Run the API
