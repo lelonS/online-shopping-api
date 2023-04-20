@@ -105,7 +105,44 @@ None
 
 ## Request Examples
 
-*Include example requests for each endpoint, demonstrating how to use the various parameters and headers. Use consistent formatting and code snippets to make it easy for readers to understand and implement.*
+### Post to orders
+
+`POST http://localhost:3000/api/orders`
+
+```json
+{
+  "customer": "64402a45b7bda38e911ab0ed",
+  "shippingAddress": "Somewhere Street 2",
+  "products": [
+    { "product": "64401f1fc3dbf1a6bde5f410", "quantity": 100 },
+    { "product": "644110c08bad225fc5643ef7", "quantity": 10 }
+  ]
+}
+```
+
+### Get all orders
+
+`GET http://localhost:3000/api/orders`
+
+### Get a specific order
+
+`GET http://localhost:3000/api/orders/644110ee8bad225fc5643efc`
+
+### Update a specific order
+
+`PUT http://localhost:3000/api/orders/644110ee8bad225fc5643efc`
+
+Only the fields you send will be updated. In this example, only the `shippingAddress` field will be updated.
+
+```json
+{
+  "shippingAddress": "Somewhere Street 3"
+}
+```
+
+### Delete a specific order
+
+`DELETE http://localhost:3000/api/orders/644110ee8bad225fc5643efc`
 
 ## Response Structure
 
