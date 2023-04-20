@@ -43,3 +43,12 @@ node api.js
 ```bash
 curl http://localhost:3000/api/products
 ```
+
+## Generate mock data
+
+1. Navigate to the project directory
+
+2. Run the script
+```bash
+node ./mockdata/generate-mockdata.js
+```
