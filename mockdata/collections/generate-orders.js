@@ -4,8 +4,8 @@ import { faker } from "@faker-js/faker";
 function getMockOrders(products, customers) {
 
   let orders = [];
-  // Generate 10 orders
-  for (let i = 0; i < 10; i++) {
+  // Generate a order for each customer
+  for (let i = 0; i < customers.length; i++) {
 
 
     const order = {

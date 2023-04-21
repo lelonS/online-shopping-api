@@ -4,9 +4,8 @@ import { faker } from "@faker-js/faker";
 function getMockCarts(products, customers) {
   const carts = [];
 
-  // Generate 10 carts
-  for (let i = 0; i < 10; i++) {
-
+  // Generate a cart for each customer
+  for (let i = 0; i < customers.length; i++) {
 
     const cart = {
       customer: customers[i],
