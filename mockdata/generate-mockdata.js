@@ -21,7 +21,7 @@ async function run() {
   const targetSave = args[0];
 
   if (targetSave === ArgJson) {
-    console.log('Generating JSON files');
+    console.log('Generating JSON files to ' + jsonFolder);
   } else if (targetSave === ArgDb) {
     console.log('Generating data in the database');
   } else {
@@ -38,15 +38,11 @@ async function run() {
   process.exit(0);
 }
 
-run();
 
 import { Categories } from '../routes/categories.js';
 let categories = [];
 
 async function generateCategories(targetSave) {
-  // Delete all categories
-  await Categories.deleteMany();
-
   // Generate categories
   const mockCategories = getMockCategories();
 
@@ -56,6 +52,8 @@ async function generateCategories(targetSave) {
     fs.writeFileSync(jsonFolder + '/categories.json', JSON.stringify(mockCategories, null, 2));
     categories = mockCategories;
   } else if (targetSave === ArgDb) {
+    // Delete all categories
+    await Categories.deleteMany();
     // Save to database
     categories = await Categories.insertMany(mockCategories);
   }
@@ -67,9 +65,6 @@ import { Products } from '../routes/products.js';
 let products = [];
 
 async function generateProducts(targetSave) {
-  // Delete all products
-  await Products.deleteMany();
-
   // Generate products
   const mockProducts = getMockProducts(categories);
 
@@ -79,6 +74,8 @@ async function generateProducts(targetSave) {
     fs.writeFileSync(jsonFolder + '/products.json', JSON.stringify(mockProducts, null, 2));
     products = mockProducts;
   } else if (targetSave === ArgDb) {
+    // Delete all products
+    await Products.deleteMany();
     // Save to database
     products = await Products.insertMany(mockProducts);
   }
@@ -90,9 +87,6 @@ import { Customers } from '../routes/customers.js';
 let customers = [];
 
 async function generateCustomers(targetSave) {
-  // Delete all customers
-  await Customers.deleteMany();
-
   // Generate customers
   const mockCustomers = getMockCustomers();
 
@@ -102,6 +96,8 @@ async function generateCustomers(targetSave) {
     fs.writeFileSync(jsonFolder + '/customers.json', JSON.stringify(mockCustomers, null, 2));
     customers = mockCustomers;
   } else if (targetSave === ArgDb) {
+    // Delete all customers
+    await Customers.deleteMany();
     // Save to database
     customers = await Customers.insertMany(mockCustomers);
   }
@@ -112,9 +108,6 @@ async function generateCustomers(targetSave) {
 import { Carts } from '../routes/carts.js';
 
 async function generateCarts(targetSave) {
-  // Delete all carts
-  await Carts.deleteMany();
-
   // Generate carts
   const mockCarts = getMockCarts(products, customers);
 
@@ -123,6 +116,8 @@ async function generateCarts(targetSave) {
     // Save to json
     fs.writeFileSync(jsonFolder + '/carts.json', JSON.stringify(mockCarts, null, 2));
   } else if (targetSave === ArgDb) {
+    // Delete all carts
+    await Carts.deleteMany();
     // Save to database
     await Carts.insertMany(mockCarts);
   }
@@ -133,8 +128,7 @@ async function generateCarts(targetSave) {
 import { Orders } from '../routes/orders.js';
 
 async function generateOrders(targetSave) {
-  // Delete all orders
-  await Orders.deleteMany();
+
 
   // Generate orders
   const mockOrders = getMockOrders(products, customers);
@@ -144,6 +138,8 @@ async function generateOrders(targetSave) {
     // Save to json
     fs.writeFileSync(jsonFolder + '/orders.json', JSON.stringify(mockOrders, null, 2));
   } else if (targetSave === ArgDb) {
+    // Delete all orders
+    await Orders.deleteMany();
     // Save to database
     await Orders.insertMany(mockOrders);
   }
@@ -154,4 +150,4 @@ async function generateOrders(targetSave) {
 
 
 
-
+run();
