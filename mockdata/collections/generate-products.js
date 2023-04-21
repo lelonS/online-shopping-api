@@ -5,19 +5,14 @@ import { faker } from "@faker-js/faker";
 function getMockProducts(categories) {
   const products = [];
 
-  // Generate 100 products
-  for (let i = 0; i < 100; i++) {
+  // Generate 50 products
+  for (let i = 0; i < 50; i++) {
     const product = {
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
       price: faker.commerce.price(0, 1000, 0),
-      category: categories[Math.floor(Math.random() * categories.length)]._id
+      category: categories[Math.floor(Math.random() * categories.length)]
     };
-
-    // Make sure category exists (if saving to json no id is generated)
-    if (!product.category) {
-      product.category = categories[Math.floor(Math.random() * categories.length)];
-    }
 
     // Check if the product already exists
     const existingProduct = products.find(p => p.name === product.name);

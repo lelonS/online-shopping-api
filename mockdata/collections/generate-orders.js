@@ -6,35 +6,24 @@ function getMockOrders(products, customers) {
   let orders = [];
   // Generate 10 orders
   for (let i = 0; i < 10; i++) {
-    let orderCustomer = customers[i]._id;
 
-    if (!orderCustomer) {
-      orderCustomer = customers[i];
-    }
 
     const order = {
-      customer: orderCustomer,
+      customer: customers[i],
       shippingAddress: faker.address.streetAddress(),
       products: []
     };
 
     // Add 1 to 5 products to the order
     const numberOfProducts = Math.floor(Math.random() * 5) + 1;
-    for (let j = 0; j < numberOfProducts; j++) {
-      const product = products[Math.floor(Math.random() * products.length)];
-      const quantity = Math.floor(Math.random() * 10) + 1;
+    const allProducts = faker.helpers.uniqueArray(products, numberOfProducts);
 
-      if (product._id) {
-        order.products.push({
-          product: product._id,
-          quantity: quantity
-        });
-      } else {
-        order.products.push({
-          product: product,
-          quantity: quantity
-        });
-      }
+    for (const prod of allProducts) {
+      const entry = {
+        product: prod,
+        quantity: Math.floor(Math.random() * 5) + 1
+      };
+      order.products.push(entry);
     }
 
     orders.push(order);
