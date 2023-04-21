@@ -49,6 +49,21 @@ curl http://localhost:3000/api/products
 1. Navigate to the project directory
 
 2. Run the script
+
+
+
+**Generate mock data in the database**
+
+<span style="color:yellow">Warning:</span> This will delete all data in the database
+
 ```bash
-node ./mockdata/generate-mockdata.js
+npm run gen-data db
+```
+
+**Generate mock data as JSON**
+
+<span style="color:yellow">Warning:</span> This will delete all data in the json files
+
+```bash
+npm run gen-data json
 ```
