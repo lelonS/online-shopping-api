@@ -22,6 +22,11 @@ async function run() {
 
   if (targetSave === ArgJson) {
     console.log('Generating JSON files to ' + jsonFolder);
+    // Make sure folder exists
+    if (!fs.existsSync(jsonFolder)) {
+      fs.mkdirSync(jsonFolder);
+    }
+
   } else if (targetSave === ArgDb) {
     console.log('Generating data in the database');
   } else {
