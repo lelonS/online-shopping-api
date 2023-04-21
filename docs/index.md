@@ -226,7 +226,176 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ## Response Examples
 
-*Provide example responses for each endpoint, showcasing both successful and error scenarios. These examples should help developers understand what to expect when interacting with the API.*
+### Success POST response (Status code: 201)
+
+`POST http://localhost:3000/api/orders`
+
+**Request body**
+
+```json
+{
+  "customer": "64402a45b7bda38e911ab0ed",
+  "shippingAddress": "Somewhere Street 2",
+  "products": [
+    { "product": "64401f1fc3dbf1a6bde5f410", "quantity": 100 },
+    { "product": "644110c08bad225fc5643ef7", "quantity": 10 }
+  ]
+}
+```
+
+**Reponse body**
+
+```json
+{
+  "customer": "64402a45b7bda38e911ab0ed",
+  "shippingAddress": "Somewhere Street 2",
+  "products": [
+    {
+      "product": "64401f1fc3dbf1a6bde5f410",
+      "quantity": 100,
+      "_id": "64427de97dff9035ae194366"
+    },
+    {
+      "product": "644110c08bad225fc5643ef7",
+      "quantity": 10,
+      "_id": "64427de97dff9035ae194367"
+    }
+  ],
+  "_id": "64427de97dff9035ae194365",
+  "createdAt": "2023-04-21T12:13:29.855Z",
+  "__v": 0
+}
+```
+
+### Validation Error POST response (Status code: 400)
+
+`POST http://localhost:3000/api/orders`
+
+**Request body**
+
+* Missing required field `customer`
+
+```json
+{
+  "shippingAddress": "Somewhere Street 2",
+  "products": [
+    { "product": "64401f1fc3dbf1a6bde5f410", "quantity": 100 },
+    { "product": "644110c08bad225fc5643ef7", "quantity": 10 }
+  ]
+}
+```
+
+**Reponse body**
+
+```json
+{
+  "message": "Orders validation failed: customer: Path `customer` is required."
+}
+```
+
+### Success GET response (Status code: 200)
+
+`GET http://localhost:3000/api/orders/6442838b4d02de6678d52314`
+
+**Response body**
+
+```json
+{
+  "_id": "6442838b4d02de6678d52314",
+  "customer": {
+    "_id": "6442838b4d02de6678d522d8",
+    "fullName": "Vince Mayert",
+    "email": "Vince.Mayert@gmail.com",
+    "password": "9qYV8kcT70A7tD4",
+    "__v": 0
+  },
+  "shippingAddress": "9336 Ozella Meadows",
+  "products": [
+    {
+      "product": {
+        "_id": "6442838a4d02de6678d522ca",
+        "name": "Ergonomic Metal Sausages",
+        "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+        "price": 310,
+        "category": "6442838a4d02de6678d5229d",
+        "__v": 0
+      },
+      "quantity": 2,
+      "_id": "6442838b4d02de6678d52315"
+    }
+  ],
+  "createdAt": "2023-04-21T12:37:31.149Z",
+  "__v": 0
+}
+```
+
+### Not Found Error GET response (Status code: 404)
+
+`GET http://localhost:3000/api/orders/aaaaaaaaaaaaaaaaaaaaaaaa`
+
+* The order with the id `aaaaaaaaaaaaaaaaaaaaaaaa` does not exist.
+
+**Response body**
+
+```json
+{
+  "message": "Not found"
+}
+```
+
+### Success PUT response (Status code: 200)
+
+`PUT http://localhost:3000/api/orders/6442838b4d02de6678d52314`
+
+**Request body**
+
+```json
+{
+  "shippingAddress": "Somewhere Street 3"
+}
+```
+
+**Response body**
+
+```json
+{
+  "_id": "6442838b4d02de6678d52314",
+  "customer": "6442838b4d02de6678d522d8",
+  "shippingAddress": "Somewhere Street 3",
+  "products": [
+    {
+      "product": "6442838a4d02de6678d522ca",
+      "quantity": 2,
+      "_id": "6442838b4d02de6678d52315"
+    }
+  ],
+  "createdAt": "2023-04-21T12:37:31.149Z",
+  "__v": 0
+}
+```
+
+### Success DELETE response (Status code: 200)
+
+`DELETE http://localhost:3000/api/orders/6442838b4d02de6678d52314`
+
+**Response body**
+
+```json
+{
+  "_id": "6442838b4d02de6678d52314",
+  "customer": "6442838b4d02de6678d522d8",
+  "shippingAddress": "Somewhere Street 3",
+  "products": [
+    {
+      "product": "6442838a4d02de6678d522ca",
+      "quantity": 2,
+      "_id": "6442838b4d02de6678d52315"
+    }
+  ],
+  "createdAt": "2023-04-21T12:37:31.149Z",
+  "__v": 0
+}
+```
 
 ## Error Handling
 

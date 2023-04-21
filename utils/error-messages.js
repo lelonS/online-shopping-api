@@ -15,7 +15,7 @@ export function errorResponse(error) {
   fs.appendFileSync('./utils/error.log', JSON.stringify(error, null, 2) + '\n');
 
 
-  // Check error
+  // Validation error
   if (error.name === 'ValidationError') {
     return { response: { message: error.message }, status: 400 }
   }
