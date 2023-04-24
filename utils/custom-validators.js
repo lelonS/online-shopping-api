@@ -6,3 +6,9 @@ function validateEmail(email) {
 }
 
 export const emailValidator = { func: validateEmail, message: 'Invalid email address' }
+
+function notEmptyArray(array) {
+  return array.length > 0;
+}
+
+export const notEmptyArrayValidator = { func: notEmptyArray, message: 'Array must have atleast one element' }

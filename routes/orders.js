@@ -1,6 +1,7 @@
 import Router from 'express';
 import mongoose, { Schema } from 'mongoose';
 import { errorResponse, notFoundResponse } from '../utils/error-messages.js';
+import { notEmptyArrayValidator } from '../utils/custom-validators.js';
 
 
 const ordersRouter = Router();
@@ -8,10 +9,16 @@ const ordersRouter = Router();
 const orderSchema = new Schema({
   customer: { type: Schema.Types.ObjectId, ref: 'Customers', required: true },
   shippingAddress: { type: String, required: true },
-  products: [{
-    product: { type: Schema.Types.ObjectId, ref: 'Products', required: true },
-    quantity: { type: Number, required: true, min: 1 }
-  }],
+  products: {
+    type: [{
+      product: { type: Schema.Types.ObjectId, ref: 'Products', required: true },
+      quantity: { type: Number, required: true, min: 1 }
+    }],
+    validate: {
+      validator: notEmptyArrayValidator.func,
+      message: 'A minimum of one product is required'
+    }
+  },
   createdAt: { type: Date, default: Date.now }
 });
 
