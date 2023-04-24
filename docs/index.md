@@ -210,6 +210,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 |_id|String|The id of the cart|
 |customer|Object|The customer of the cart ([See Customers](#customers-1))|
 |products|Array|The products in the cart and quantity. The array includes objects with the properties `{product: Object, quantity: 2}`. ([See Products](#products-1) for `product`)|
+|updatedAt|Date|The date the cart was last updated|
 |__v|Number|The version of the cart|
 
 ### Orders
@@ -222,6 +223,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 |customer|Object|The customer of the order ([See Customers](#customers-1))|
 |shippingAddress|String|The shipping address of the customer|
 |products|Array|The products in the order and quantity. The array includes objects with the properties `{product: Object, quantity: 2}`. ([See Products](#products-1) for `product`)|
+|createdAt|Date|The date the order was created|
 |__v|Number|The version of the order|
 
 ## Response Examples
