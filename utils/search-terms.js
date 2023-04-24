@@ -29,6 +29,19 @@ function getLessThan(searchString) {
 
 
 function getSearchTerm(query) {
+
+  if (Array.isArray(query)) {
+    const searchTerms = [];
+    for (const q of query) {
+      searchTerms.push(getSearchTerm(q));
+    }
+    const allSearchTerms = {};
+    for (const searchTerm of searchTerms) {
+      Object.assign(allSearchTerms, searchTerm);
+    }
+    return allSearchTerms;
+  }
+
   const terms = query.split(':');
 
   // If there is only one term, it must be an exact match
@@ -48,7 +61,6 @@ function getSearchTerm(query) {
 
 async function getProductSearchTerms(queries) {
   const searchTerms = {}
-
 
   if (queries.name) {
     searchTerms.name = getSearchTerm(queries.name);
@@ -71,7 +83,7 @@ async function getProductSearchTerms(queries) {
       searchTerms.category = null;
     }
   }
-
+  console.log(searchTerms);
   return searchTerms;
 }
 
