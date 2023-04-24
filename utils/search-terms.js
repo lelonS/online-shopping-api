@@ -30,15 +30,15 @@ function getLessThan(searchString) {
 
 function getSearchTerm(query) {
 
+  // If the query is an array there are multiple search terms
+  // example: ?price=gt:10&price=lt:20
   if (Array.isArray(query)) {
-    const searchTerms = [];
+    let allSearchTerms = {};
     for (const q of query) {
-      searchTerms.push(getSearchTerm(q));
+      // Add the search terms to the object
+      Object.assign(allSearchTerms, getSearchTerm(q));
     }
-    const allSearchTerms = {};
-    for (const searchTerm of searchTerms) {
-      Object.assign(allSearchTerms, searchTerm);
-    }
+    console.log(allSearchTerms);
     return allSearchTerms;
   }
 
@@ -58,22 +58,19 @@ function getSearchTerm(query) {
 
 }
 
-
+// Product search terms
 async function getProductSearchTerms(queries) {
   const searchTerms = {}
-
   if (queries.name) {
     searchTerms.name = getSearchTerm(queries.name);
   }
-
   if (queries.description) {
     searchTerms.description = getSearchTerm(queries.description);
   }
-
   if (queries.price) {
     searchTerms.price = getSearchTerm(queries.price);
   }
-
+  // Populated fields
   if (queries.category) {
     const category = await Categories.findOne({ name: getSearchTerm(queries.category) });
     if (category) {
@@ -87,6 +84,7 @@ async function getProductSearchTerms(queries) {
   return searchTerms;
 }
 
+// Category search terms
 async function getCategorySearchTerms(queries) {
   const searchTerms = {}
 
@@ -97,6 +95,7 @@ async function getCategorySearchTerms(queries) {
   return searchTerms;
 }
 
+// Customer search terms
 async function getCustomerSearchTerms(queries) {
   const searchTerms = {}
 
@@ -111,6 +110,7 @@ async function getCustomerSearchTerms(queries) {
   return searchTerms;
 }
 
+// Order search terms
 async function getOrderSearchTerms(queries) {
   const searchTerms = {}
 
@@ -137,6 +137,7 @@ async function getOrderSearchTerms(queries) {
   return searchTerms;
 }
 
+// Cart search terms
 async function getCartSearchTerms(queries) {
   const searchTerms = {}
 
