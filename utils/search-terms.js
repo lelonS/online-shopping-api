@@ -1,6 +1,10 @@
 import { query as searchWord } from 'express';
 import { Schema } from 'mongoose';
 import { Categories } from '../routes/categories.js';
+import { Products } from '../routes/products.js';
+import { Customers } from '../routes/customers.js';
+import { Orders } from '../routes/orders.js';
+import { Carts } from '../routes/carts.js';
 
 //['≈', '=', '>', '<']
 const operators = {
@@ -71,6 +75,81 @@ async function getProductSearchTerms(queries) {
   return searchTerms;
 }
 
+async function getCategorySearchTerms(queries) {
+  const searchTerms = {}
+
+  if (queries.name) {
+    searchTerms.name = getSearchTerm(queries.name);
+  }
+
+  return searchTerms;
+}
+
+async function getCustomerSearchTerms(queries) {
+  const searchTerms = {}
+
+  if (queries.name) {
+    searchTerms.name = getSearchTerm(queries.name);
+  }
+
+  if (queries.email) {
+    searchTerms.email = getSearchTerm(queries.email);
+  }
+
+  return searchTerms;
+}
+
+async function getOrderSearchTerms(queries) {
+  const searchTerms = {}
+
+  if (queries.customer) {
+    const customer = await Customers.findOne({ fullName: getSearchTerm(queries.customer) });
+    if (customer) {
+      searchTerms.customer = customer._id;
+    }
+    else {
+      searchTerms.customer = null;
+    }
+  }
+
+  if (queries.product) {
+    const product = await Products.findOne({ name: getSearchTerm(queries.product) });
+    if (product) {
+      searchTerms.product = product._id;
+    }
+    else {
+      searchTerms.product = null;
+    }
+  }
+
+  return searchTerms;
+}
+
+async function getCartSearchTerms(queries) {
+  const searchTerms = {}
+
+  if (queries.customer) {
+    const customer = await Customers.findOne({ fullName: getSearchTerm(queries.customer) });
+    if (customer) {
+      searchTerms.customer = customer._id;
+    }
+    else {
+      searchTerms.customer = null;
+    }
+  }
+
+  if (queries.product) {
+    const product = await Products.findOne({ name: getSearchTerm(queries.product) });
+    if (product) {
+      searchTerms.product = product._id;
+    }
+    else {
+      searchTerms.product = null;
+    }
+  }
+
+  return searchTerms;
+}
 
 
-export default getProductSearchTerms;
+export { getProductSearchTerms, getCategorySearchTerms, getCustomerSearchTerms, getOrderSearchTerms, getCartSearchTerms };

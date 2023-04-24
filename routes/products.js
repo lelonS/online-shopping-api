@@ -1,7 +1,7 @@
 import Router from 'express';
 import mongoose, { Schema } from 'mongoose';
 import { errorResponse, notFoundResponse } from '../utils/error-messages.js';
-import getProductSearchTerms from '../utils/search-terms.js';
+import { getProductSearchTerms } from '../utils/search-terms.js';
 
 
 const productsRouter = Router();

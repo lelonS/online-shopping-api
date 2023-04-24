@@ -2,6 +2,7 @@ import Router from 'express';
 import mongoose, { Schema } from 'mongoose';
 import { errorResponse, notFoundResponse } from '../utils/error-messages.js';
 import { notEmptyArrayValidator } from '../utils/custom-validators.js';
+import { getOrderSearchTerms } from '../utils/search-terms.js';
 
 
 const ordersRouter = Router();
@@ -52,7 +53,7 @@ ordersRouter.get('/', async (req, res) => {
   if (pageNr < 1) { pageNr = 1; }
 
   // Get all orders
-  Orders.find()
+  Orders.find(await getOrderSearchTerms(req.query))
     .limit(pageSize)
     .skip(pageSize * (pageNr - 1))
     .populate('customer')
