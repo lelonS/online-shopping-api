@@ -124,16 +124,17 @@ async function getOrderSearchTerms(queries) {
     }
   }
 
-  if (queries.product) {
-    const product = await Products.findOne({ name: getSearchTerm(queries.product) });
-    if (product) {
-      searchTerms.product = product._id;
+  if (queries.products) {
+    const productArray = await Products.find({ name: getSearchTerm(queries.products) }).select('_id');
+    console.log(productArray);
+    if (productArray) {
+      searchTerms.products = { $elemMatch: { product: { $in: productArray } } };
     }
     else {
-      searchTerms.product = null;
+      searchTerms.products = null;
     }
   }
-
+  console.log(searchTerms);
   return searchTerms;
 }
 
