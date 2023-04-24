@@ -57,7 +57,7 @@ curl http://localhost:3000/api/products
 ⚠️This will replace all data in the database⚠️
 
 ```bash
-npm run gen-data db
+npm run mock-db
 ```
 
 **Generate mock data as JSON**
@@ -65,5 +65,5 @@ npm run gen-data db
 ⚠️This will replace all data in the json files⚠️
 
 ```bash
-npm run gen-data json
+npm run mock-json
 ```

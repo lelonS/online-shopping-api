@@ -5,7 +5,9 @@
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gen-data": "node ./mockdata/generate-mockdata.js"
+    "gen-data": "node ./mockdata/generate-mockdata.js",
+    "mock-db": "node ./mockdata/generate-mockdata.js db",
+    "mock-json": "node ./mockdata/generate-mockdata.js json"
   },
   "repository": {
     "type": "git",
