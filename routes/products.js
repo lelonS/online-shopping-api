@@ -1,6 +1,7 @@
 import Router from 'express';
 import mongoose, { Schema } from 'mongoose';
 import { errorResponse, notFoundResponse } from '../utils/error-messages.js';
+import getProductSearchTerms from '../utils/search-terms.js';
 
 
 const productsRouter = Router();
@@ -36,13 +37,14 @@ productsRouter.post('/', async (req, res) => {
 
 // Get all products
 productsRouter.get('/', async (req, res) => {
+
   // Pagination
   const pageSize = 10;
   let pageNr = parseInt(req.query.page, 10) || 1;
   if (pageNr < 1) { pageNr = 1; }
 
   // Get all products
-  Products.find()
+  Products.find(await getProductSearchTerms(req.query, productSchema))
     .limit(pageSize)
     .skip(pageSize * (pageNr - 1))
     .populate('category')
