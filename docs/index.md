@@ -63,7 +63,7 @@ If you send a field that is not in the schema, it will be ignored.
 
 When using `PUT` requests, you only need to send the fields you want to update. For example, if you want to update the name of a product, you only need to send the `name` field.
 
-`PUT` requests are also validated.
+Both `POST` and `PUT` requests are validated.
 
 **Categories**
 
