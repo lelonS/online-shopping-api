@@ -43,13 +43,29 @@ To access the API, you must have a mongoDB connection string. To use your connec
 
 ## Request Parameters
 
+### GET requests to collection
+
+`GET http://localhost:3000/api/{collection}`
+
+**Pagination**
+
+Example: `GET http://localhost:3000/api/products?page=2`
+
+When you send a `GET` request to a collection, you can paginate the results by adding a `page` parameter to the query string. The page size is 10 documents per page.
+
+|Parameter|Type|Description|
+|---|---|---|
+|page|Number|The page number. Default: 1|
+
+### POST and PUT requests
+
 If you send a field that is not in the schema, it will be ignored.
 
 When using `PUT` requests, you only need to send the fields you want to update. For example, if you want to update the name of a product, you only need to send the `name` field.
 
 `PUT` requests are also validated.
 
-### Categories
+**Categories**
 
 `POST http://localhost:3000/api/categories`
 
@@ -58,7 +74,7 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 |name|String|The name of the category|Yes|Yes| |
 
 
-### Products
+**Products**
 
 `POST http://localhost:3000/api/products`
 
@@ -69,7 +85,7 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 |price|Number|The price of the product|Yes|No|min: 0|
 |category|String|The id of the category|No|No| |
 
-### Customers
+**Customers**
 
 `POST http://localhost:3000/api/customers`
 
@@ -79,7 +95,7 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 |email|String|The email of the customer|Yes|Yes|regex `/^[\w-\.]+@([\w-]+\.?)+[\w-]{2,4}$/`|
 |password|String|The password of the customer|Yes|No| |
 
-### Carts
+**Carts**
 
 `POST http://localhost:3000/api/carts`
 
@@ -88,7 +104,7 @@ When using `PUT` requests, you only need to send the fields you want to update. 
 |customer|String|The id of the customer|Yes|No| |
 |products|Array|The products in the cart and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|No|No|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
 
-### Orders
+**Orders**
 
 `POST http://localhost:3000/api/orders`
 

@@ -36,11 +36,20 @@ productsRouter.post('/', async (req, res) => {
 
 // Get all products
 productsRouter.get('/', async (req, res) => {
+  // Pagination
+  const pageSize = 10;
+  let pageNr = parseInt(req.query.page, 10) || 1;
+  if (pageNr < 1) { pageNr = 1; }
+
   // Get all products
   Products.find()
+    .limit(pageSize)
+    .skip(pageSize * (pageNr - 1))
     .populate('category')
     .then((result) => {
       // Get successful
+      res.set('page', pageNr);
+      res.set('page-size', pageSize);
       res.send(result);
     })
     .catch((err) => {

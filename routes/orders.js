@@ -46,12 +46,21 @@ ordersRouter.post('/', async (req, res) => {
 
 // Get all orders
 ordersRouter.get('/', async (req, res) => {
+  // Pagination
+  const pageSize = 10;
+  let pageNr = parseInt(req.query.page, 10) || 1;
+  if (pageNr < 1) { pageNr = 1; }
+
   // Get all orders
   Orders.find()
+    .limit(pageSize)
+    .skip(pageSize * (pageNr - 1))
     .populate('customer')
     .populate('products.product')
     .then((result) => {
       // Get successful
+      res.set('page', pageNr);
+      res.set('page-size', pageSize);
       res.send(result);
     })
     .catch((err) => {
