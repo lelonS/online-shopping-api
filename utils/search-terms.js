@@ -1,5 +1,5 @@
 import { query as searchWord } from 'express';
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import { Categories } from '../routes/categories.js';
 import { Products } from '../routes/products.js';
 import { Customers } from '../routes/customers.js';
@@ -58,112 +58,55 @@ function getSearchTerm(query) {
 
 }
 
-// Product search terms
-async function getProductSearchTerms(queries) {
-  const searchTerms = {}
-  if (queries.name) {
-    searchTerms.name = getSearchTerm(queries.name);
-  }
-  if (queries.description) {
-    searchTerms.description = getSearchTerm(queries.description);
-  }
-  if (queries.price) {
-    searchTerms.price = getSearchTerm(queries.price);
-  }
-  // Populated fields
-  if (queries.category) {
-    const category = await Categories.findOne({ name: getSearchTerm(queries.category) });
-    if (category) {
-      searchTerms.category = category._id;
-    }
-    else {
-      searchTerms.category = null;
-    }
-  }
-  console.log(searchTerms);
-  return searchTerms;
-}
-
-// Category search terms
-async function getCategorySearchTerms(queries) {
+async function getSearchTerms(queries, schema) {
   const searchTerms = {}
 
-  if (queries.name) {
-    searchTerms.name = getSearchTerm(queries.name);
+  try {
+    for (const key in queries) {
+      const field = key.split('.')[0]; // Example: products.product.name -> products, shippingAddress -> shippingAddress
+      const searchWord = queries[key];
+      let path = schema.paths[field];
+
+      // If the field doesn't exist in the schema, skip it
+      if (!path) { continue; }
+
+      if (path.instance === 'ObjectId' && path.options.ref) {
+        // Get the collection name
+        const collection = path.options.ref;
+
+        // Get the field to search
+        const fieldToSearch = key.split('.')[1];
+        const newKey = key.split('.')[0];
+
+        // Use find on the collection to get the ObjectId
+        const result = await mongoose.model(collection).find({ [fieldToSearch]: getSearchTerm(searchWord) }).select('_id');
+
+        // Add it to the search terms
+        searchTerms[newKey] = { $in: result };
+      } else if (path.instance === 'Array') {
+        // Get search terms for the array
+        const newQuery = key.split('.').slice(1).join('.') // Example: products.product.name -> product.name
+        const newKey = key.split('.').slice(0, -1).join('.') // Example: products.product.name -> products.product
+
+        // Get the search term for the array
+        const arraySearchTerm = await getSearchTerms({ [newQuery]: searchWord }, path.schema);
+
+        // Add it to the search terms
+        searchTerms[newKey] = Object.values(arraySearchTerm)[0];
+      }
+      else {
+        searchTerms[key] = getSearchTerm(searchWord);
+      }
+    }
+    console.log(searchTerms);
+    return searchTerms;
+  } catch (err) {
+    // console.log(err);
+    // If error in search term generation, return this (this makes it so that no documents are found)
+    // Common error is invalid id error (such as ?_id=1234)
+    return { 'null': 'null' };
   }
-
-  return searchTerms;
-}
-
-// Customer search terms
-async function getCustomerSearchTerms(queries) {
-  const searchTerms = {}
-
-  if (queries.name) {
-    searchTerms.name = getSearchTerm(queries.name);
-  }
-
-  if (queries.email) {
-    searchTerms.email = getSearchTerm(queries.email);
-  }
-
-  return searchTerms;
-}
-
-// Order search terms
-async function getOrderSearchTerms(queries) {
-  const searchTerms = {}
-
-  if (queries.customer) {
-    const customer = await Customers.findOne({ fullName: getSearchTerm(queries.customer) });
-    if (customer) {
-      searchTerms.customer = customer._id;
-    }
-    else {
-      searchTerms.customer = null;
-    }
-  }
-
-  if (queries.products) {
-    const productArray = await Products.find({ name: getSearchTerm(queries.products) }).select('_id');
-    console.log(productArray);
-    if (productArray) {
-      searchTerms['products.product'] = { $in: productArray };
-    }
-    else {
-      searchTerms.products = null;
-    }
-  }
-  console.log(searchTerms);
-  return searchTerms;
-}
-
-// Cart search terms
-async function getCartSearchTerms(queries) {
-  const searchTerms = {}
-
-  if (queries.customer) {
-    const customer = await Customers.findOne({ fullName: getSearchTerm(queries.customer) });
-    if (customer) {
-      searchTerms.customer = customer._id;
-    }
-    else {
-      searchTerms.customer = null;
-    }
-  }
-
-  if (queries.product) {
-    const product = await Products.findOne({ name: getSearchTerm(queries.product) });
-    if (product) {
-      searchTerms.product = product._id;
-    }
-    else {
-      searchTerms.product = null;
-    }
-  }
-
-  return searchTerms;
 }
 
 
-export { getProductSearchTerms, getCategorySearchTerms, getCustomerSearchTerms, getOrderSearchTerms, getCartSearchTerms };
+export { getSearchTerms };

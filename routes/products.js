@@ -1,7 +1,7 @@
 import Router from 'express';
 import mongoose, { Schema } from 'mongoose';
 import { errorResponse, notFoundResponse } from '../utils/error-messages.js';
-import { getProductSearchTerms } from '../utils/search-terms.js';
+import { getSearchTerms } from '../utils/search-terms.js';
 
 
 const productsRouter = Router();
@@ -44,7 +44,7 @@ productsRouter.get('/', async (req, res) => {
   if (pageNr < 1) { pageNr = 1; }
 
   // Get all products
-  Products.find(await getProductSearchTerms(req.query, productSchema))
+  Products.find(await getSearchTerms(req.query, productSchema))
     .limit(pageSize)
     .skip(pageSize * (pageNr - 1))
     .populate('category')
