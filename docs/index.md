@@ -137,7 +137,7 @@ Example: `GET http://localhost:3000/api/carts?products.product.name=like:ball`
 |products.product.price|Number|Search for a cart by product price|
 |products.quantity|Number|Search for a cart by product quantity|
 |products.product.category|String|Search for a cart by full category **id**|
-|lastUpdate|Date|Search for a cart by last update date|
+|lastUpdate|Date|Search for a cart by last update date `(YYYY-MM-DD)`|
 
 **Orders**
 
@@ -155,7 +155,7 @@ Example: `GET http://localhost:3000/api/orders?createdAt=gt:2019-01-01`
 |products.product.price|Number|Search for an order by product price|
 |products.quantity|Number|Search for an order by product quantity|
 |products.product.category|String|Search for an order by full category **id**|
-|createdAt|Date|Search for an order by last update date|
+|createdAt|Date|Search for an order by last update date `(YYYY-MM-DD)`|
 
 
 ### POST and PUT requests
