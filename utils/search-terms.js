@@ -98,7 +98,7 @@ async function getSearchTerms(queries, schema) {
         searchTerms[key] = getSearchTerm(searchWord);
       }
     }
-    console.log(searchTerms);
+    // console.log(searchTerms);
     return searchTerms;
   } catch (err) {
     // console.log(err);

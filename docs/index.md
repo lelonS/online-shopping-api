@@ -518,7 +518,14 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ## Error Handling
 
-*List all possible error codes and their meanings, along with guidance on how to handle these errors in the client application. This will help developers troubleshoot issues and create more robust applications.*
+**Common errors**
+
+|Error|Status code|Description|Example|
+|---|---|---|---|
+|Not found|404|The requested resource does not exist|Trying to find a document with an id that does not exist|
+|Validation error|400|The request body is not valid|Trying to create a document with a required field missing|
+|Cast error|400|The request body is not valid|Trying to create a document with an invalid id|
+|Duplicate key error|409|The request body is not valid|Trying to create a document with a unique field that already exists|
 
 ## Rate Limiting and Throttling
 
