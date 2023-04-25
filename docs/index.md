@@ -45,7 +45,7 @@ To access the API, you must have a mongoDB connection string. To use your connec
 
 ### GET requests to collection
 
-`GET http://localhost:3000/api/{collection}`
+`GET http://localhost:3000/api/{collection}?page={page}&sort={sort}`
 
 **General parameters**
 
@@ -67,7 +67,20 @@ Example: `GET http://localhost:3000/api/products?sort=name`
 
 Example-2: `GET http://localhost:3000/api/products?sort=-name`
 
-When you send a `GET` request to a collection, you can sort the results by adding a `sort` parameter to the query string. The sort parameter should be the name of the field you want to sort by. Use a `-` before the field name to sort in descending order. You can not sort by fields in populated fields. You can only sort by one field at a time.
+You can sort the results by adding a `sort` parameter to the query string. The sort parameter should be the name of the field you want to sort by. Use a `-` before the field name to sort in descending order. You can not sort by fields in populated fields. You can only sort by one field at a time.
+
+**Search**
+
+Example: `GET http://localhost:3000/api/products?name=product`
+
+Example-2: `GET http://localhost:3000/api/products?price=lt:100`
+
+|Operator|Description|
+|---|---|
+|like|Search for a string that contains the value|
+|lt|Search for a value that is less than the value|
+|gt|Search for a value that is greater than the value|
+
 
 ### POST and PUT requests
 
