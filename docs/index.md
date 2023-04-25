@@ -47,15 +47,27 @@ To access the API, you must have a mongoDB connection string. To use your connec
 
 `GET http://localhost:3000/api/{collection}`
 
+**General parameters**
+
+|Parameter|Type|Description|Default|
+|---|---|---|---|
+|page|Number|The page number|1|
+|sort|String|The field to sort by|_id|
+
+
 **Pagination**
 
 Example: `GET http://localhost:3000/api/products?page=2`
 
 When you send a `GET` request to a collection, you can paginate the results by adding a `page` parameter to the query string. The page size is 10 documents per page.
 
-|Parameter|Type|Description|
-|---|---|---|
-|page|Number|The page number. Default: 1|
+**Sorting**
+
+Example: `GET http://localhost:3000/api/products?sort=name`
+
+Example-2: `GET http://localhost:3000/api/products?sort=-name`
+
+When you send a `GET` request to a collection, you can sort the results by adding a `sort` parameter to the query string. The sort parameter should be the name of the field you want to sort by. Use a `-` before the field name to sort in descending order. You can not sort by fields in populated fields. You can only sort by one field at a time.
 
 ### POST and PUT requests
 
