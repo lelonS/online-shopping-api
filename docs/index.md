@@ -112,7 +112,7 @@ Both `POST` and `PUT` requests are validated.
 |---|---|---|---|---|---|
 |customer|String|The id of the customer|Yes|No| |
 |shippingAddress|String|The shipping address of the customer|Yes|No| |
-|products|Array|The products in the order and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|No|No|min-length: 1. Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
+|products|Array|The products in the order and quantity. The array should include objects with the properties `{product: '{productID}', quantity: 2}`|Yes|No|Each object in the array must have the properties `product` and `quantity`. (`quantity` min: 1)|
 
 
 ## Request Headers
