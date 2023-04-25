@@ -128,7 +128,7 @@ async function getOrderSearchTerms(queries) {
     const productArray = await Products.find({ name: getSearchTerm(queries.products) }).select('_id');
     console.log(productArray);
     if (productArray) {
-      searchTerms.products = { $elemMatch: { product: { $in: productArray } } };
+      searchTerms['products.product'] = { $in: productArray };
     }
     else {
       searchTerms.products = null;
