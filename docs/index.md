@@ -54,6 +54,8 @@ To access the API, you must have a mongoDB connection string. To use your connec
 |page|Number|The page number|1|
 |sort|String|The field to sort by|_id|
 
+To use multiple parameters, separate them with an ampersand (`&`). For example: `GET http://localhost:3000/api/products?page=2&sort=name`
+
 
 **Pagination**
 
@@ -69,17 +71,91 @@ Example-2: `GET http://localhost:3000/api/products?sort=-name`
 
 You can sort the results by adding a `sort` parameter to the query string. The sort parameter should be the name of the field you want to sort by. Use a `-` before the field name to sort in descending order. You can not sort by fields in populated fields. You can only sort by one field at a time.
 
-**Search**
+#### Search
 
 Example: `GET http://localhost:3000/api/products?name=product`
 
-Example-2: `GET http://localhost:3000/api/products?price=lt:100`
+Example-2: `GET http://localhost:3000/api/products?price=gt:100&price=lt:200`
 
 |Operator|Description|
 |---|---|
 |like|Search for a string that contains the value|
 |lt|Search for a value that is less than the value|
 |gt|Search for a value that is greater than the value|
+
+When using no operator, the search will be done using exact match.
+
+**Categories**
+
+`GET http://localhost:3000/api/categories?{parameter}={value}`
+
+Example: `GET http://localhost:3000/api/categories?name=like:toy`
+
+|Parameter|Type|Description|
+|---|---|---|
+|name|String|Search for a category by name|
+
+**Products**
+
+`GET http://localhost:3000/api/products?{parameter}={value}`
+
+Example: `GET http://localhost:3000/api/products?category.name=like:toy`
+
+|Parameter|Type|Description|
+|---|---|---|
+|name|String|Search for a product by name|
+|description|String|Search for a product by description|
+|price|Number|Search for a product by price|
+|category.name|String|Search for a product by category name|
+|category._id|String|Search for a product by category id. (only full id)|
+
+**Customers**
+
+`GET http://localhost:3000/api/customers?{parameter}={value}`
+
+Example: `GET http://localhost:3000/api/customers?fullName=like:john`
+
+|Parameter|Type|Description|
+|---|---|---|
+|fullName|String|Search for a customer by full name|
+|email|String|Search for a customer by email|
+|password|String|Search for a customer by password|
+
+**Carts**
+
+`GET http://localhost:3000/api/carts?{parameter}={value}`
+
+Example: `GET http://localhost:3000/api/carts?products.product.name=like:ball`
+
+|Parameter|Type|Description|
+|---|---|---|
+|customer.fullName|String|Search for a cart by customer full name|
+|customer.email|String|Search for a cart by customer email|
+|customer.password|String|Search for a cart by customer password|
+|products.product.name|String|Search for a cart by product name|
+|products.product.description|String|Search for a cart by product description|
+|products.product.price|Number|Search for a cart by product price|
+|products.quantity|Number|Search for a cart by product quantity|
+|products.product.category|String|Search for a cart by full category **id**|
+|lastUpdate|Date|Search for a cart by last update date|
+
+**Orders**
+
+`GET http://localhost:3000/api/orders`
+
+Example: `GET http://localhost:3000/api/orders?createdAt=gt:2019-01-01`
+
+|Parameter|Type|Description|
+|---|---|---|
+|customer.fullName|String|Search for an order by customer full name|
+|customer.email|String|Search for an order by customer email|
+|customer.password|String|Search for an order by customer password|
+|products.product.name|String|Search for an order by product name|
+|products.product.description|String|Search for an order by product description|
+|products.product.price|Number|Search for an order by product price|
+|products.quantity|Number|Search for an order by product quantity|
+|products.product.category|String|Search for an order by full category **id**|
+|createdAt|Date|Search for an order by last update date|
 
 
 ### POST and PUT requests
