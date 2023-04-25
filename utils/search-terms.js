@@ -1,10 +1,5 @@
-import { query as searchWord } from 'express';
 import mongoose, { Schema } from 'mongoose';
-import { Categories } from '../routes/categories.js';
-import { Products } from '../routes/products.js';
-import { Customers } from '../routes/customers.js';
-import { Orders } from '../routes/orders.js';
-import { Carts } from '../routes/carts.js';
+
 
 //['≈', '=', '>', '<']
 const operators = {
