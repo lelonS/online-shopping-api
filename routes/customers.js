@@ -47,10 +47,17 @@ customersRouter.get('/', async (req, res) => {
   let pageNr = parseInt(req.query.page, 10) || 1;
   if (pageNr < 1) { pageNr = 1; }
 
+  // Sorting
+  const sortParameter = req.query.sort || 'fullName'
+  // If the sort parameter starts with a minus, the sort order is descending
+  const sortDescending = sortParameter.startsWith('-') ? -1 : 1;
+  const sortParameterWithoutMinus = sortParameter.replace('-', '');
+
   // Get all customers
   Customers.find(await getSearchTerms(req.query, customerSchema))
     .limit(pageSize)
     .skip(pageSize * (pageNr - 1))
+    .sort({ [sortParameterWithoutMinus]: sortDescending })
     .then((result) => {
       // Get successful
       res.set('page', pageNr);
