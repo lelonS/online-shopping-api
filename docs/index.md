@@ -155,7 +155,7 @@ Example: `GET http://localhost:3000/api/orders?createdAt=gt:2019-01-01`
 |products.product.price|Number|Search by product price|
 |products.quantity|Number|Search product quantity|
 |products.product.category|String|Search by pruduct category**id**|
-|createdAt|Date|Search for an order by last update date `(YYYY-MM-DD)`|
+|createdAt|Date|Search by last update date `(YYYY-MM-DD)`|
 
 
 ### POST and PUT requests
