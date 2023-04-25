@@ -136,7 +136,7 @@ Example: `GET http://localhost:3000/api/carts?products.product.name=like:ball`
 |products.product.description|String|Search for product description|
 |products.product.price|Number|Search for product price|
 |products.quantity|Number|Search for product quantity|
-|products.product.category|String|Search for full category **id**|
+|products.product.category|String|Search by pruduct category**id**|
 |lastUpdate|Date|Search for cart by last update date `(YYYY-MM-DD)`|
 
 **Orders**
