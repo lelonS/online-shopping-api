@@ -93,7 +93,7 @@ Example: `GET http://localhost:3000/api/categories?name=like:toy`
 
 |Parameter|Type|Description|
 |---|---|---|
-|name|String|Search for a category by name|
+|name|String|Search by name|
 
 **Products**
 
@@ -103,11 +103,11 @@ Example: `GET http://localhost:3000/api/products?category.name=like:toy`
 
 |Parameter|Type|Description|
 |---|---|---|
-|name|String|Search for a product by name|
-|description|String|Search for a product by description|
-|price|Number|Search for a product by price|
-|category.name|String|Search for a product by category name|
-|category._id|String|Search for a product by category id. (only full id)|
+|name|String|Search by name|
+|description|String|Search by description|
+|price|Number|Search by price|
+|category.name|String|Search by category name|
+|category._id|String|Search by category id. (only full id)|
 
 **Customers**
 
@@ -117,9 +117,9 @@ Example: `GET http://localhost:3000/api/customers?fullName=like:john`
 
 |Parameter|Type|Description|
 |---|---|---|
-|fullName|String|Search for a customer by full name|
-|email|String|Search for a customer by email|
-|password|String|Search for a customer by password|
+|fullName|String|Search by full name|
+|email|String|Search by email|
+|password|String|Search by password|
 
 **Carts**
 
@@ -129,15 +129,15 @@ Example: `GET http://localhost:3000/api/carts?products.product.name=like:ball`
 
 |Parameter|Type|Description|
 |---|---|---|
-|customer.fullName|String|Search for a cart by customer full name|
-|customer.email|String|Search for a cart by customer email|
-|customer.password|String|Search for a cart by customer password|
-|products.product.name|String|Search for a cart by product name|
-|products.product.description|String|Search for a cart by product description|
-|products.product.price|Number|Search for a cart by product price|
-|products.quantity|Number|Search for a cart by product quantity|
-|products.product.category|String|Search for a cart by full category **id**|
-|lastUpdate|Date|Search for a cart by last update date `(YYYY-MM-DD)`|
+|customer.fullName|String|Search for customer full name|
+|customer.email|String|Search for customer email|
+|customer.password|String|Search for customer password|
+|products.product.name|String|Search for product name|
+|products.product.description|String|Search for product description|
+|products.product.price|Number|Search for product price|
+|products.quantity|Number|Search for product quantity|
+|products.product.category|String|Search for full category **id**|
+|lastUpdate|Date|Search for cart by last update date `(YYYY-MM-DD)`|
 
 **Orders**
 
@@ -147,14 +147,14 @@ Example: `GET http://localhost:3000/api/orders?createdAt=gt:2019-01-01`
 
 |Parameter|Type|Description|
 |---|---|---|
-|customer.fullName|String|Search for an order by customer full name|
-|customer.email|String|Search for an order by customer email|
-|customer.password|String|Search for an order by customer password|
-|products.product.name|String|Search for an order by product name|
-|products.product.description|String|Search for an order by product description|
-|products.product.price|Number|Search for an order by product price|
-|products.quantity|Number|Search for an order by product quantity|
-|products.product.category|String|Search for an order by full category **id**|
+|customer.fullName|String|Search by customer full name|
+|customer.email|String|Search by customer email|
+|customer.password|String|Search by customer password|
+|products.product.name|String|Search by product name|
+|products.product.description|String|Search by product description|
+|products.product.price|Number|Search by product price|
+|products.quantity|Number|Search product quantity|
+|products.product.category|String|Search by pruduct category**id**|
 |createdAt|Date|Search for an order by last update date `(YYYY-MM-DD)`|
 
 
