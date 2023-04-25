@@ -1,6 +1,7 @@
 import Router from 'express';
 import mongoose, { Schema } from 'mongoose';
 import { errorResponse, notFoundResponse } from '../utils/error-messages.js';
+import { getSearchTerms } from '../utils/search-terms.js';
 
 
 const cartsRouter = Router();
@@ -44,7 +45,7 @@ cartsRouter.get('/', async (req, res) => {
   if (pageNr < 1) { pageNr = 1; }
 
   // Get all carts
-  Carts.find()
+  Carts.find(await getSearchTerms(req.query, cartSchema))
     .limit(pageSize)
     .skip(pageSize * (pageNr - 1))
     .populate('customer')
