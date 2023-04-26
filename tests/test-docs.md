@@ -247,11 +247,12 @@ Pass
 
 **Description:**
 
-Verify that the API can handle a large number of requests.
+Verify the API’s performance under heavy load.
 
 **Steps:**
 
-TBD
+1. Send multiple `GET` requests to a valid endpoint. `GET /api/products`
+2. Verify that the API returns the status code `200` and the response time.
 
 **Expected Result:**
 
@@ -264,3 +265,10 @@ TBD
 **Pass/Fail:**
 
 TBD
+
+
+### 11. Verify that the API can recover gracefully from failures, such as database connection issues without compromising data integrity.
+
+### 12. Test the API’s ability to handle edge cases, such as requests with missing or invalid parameters, and ensure that appropriate error messages are returned.
+
+### 13. Verify that the API correctly implements rate limiting or throttling mechanisms to prevent abuse or excessive use of resources.
