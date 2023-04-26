@@ -169,3 +169,69 @@ Verify that the API can handle multiple concurrent requests.
 **Description:**
 
 Verify that the API correctly handles different successful HTTP methods for each endpoint.
+
+**Steps:**
+
+*All collections: Categories, Products, Customers, Carts, Orders*
+
+1. Send a `POST` request to a collection endpoint. `POST /api/{collection}`
+2. In the request body, include the required fields.
+3. Verify that the API returns the status code `201` and the correct data. Mark down the id
+4. Send a `GET` request to a collection endpoint. `GET /api/{collection}`
+5. Verify that the API returns the status code `200` and the correct data.
+6. Send a `GET` request to the document that was created `step 1`. `GET /api/{collection}/{id}`
+7. Verify that the API returns the status code `200` and the correct data.
+8. Send a `PUT` request to the document that was created `step 1`. `PUT /api/{collection}/{id}`
+9. In the request body, change the value of one of the fields.
+10. Verify that the API returns the status code `200` and the correct data.
+11. Send a `DELETE` request to the document that was created `step 1`. `DELETE /api/{collection}/{id}`
+12. Verify that the API returns the status code `200`.
+13. Repeat steps 1-12 for each collection.
+
+**Expected Result:**
+
+The API returns status code `201` for `POST`. Status code `200` for `GET`, `PUT`, and `DELETE`.
+
+**Actual Result:**
+
+The API returns status code `201` for `POST`. Status code `200` for `GET`, `PUT`, and `DELETE`.
+
+**Pass/Fail:**
+
+Pass
+
+
+### 9. Check if the API correctly handles updates to existing records, ensuring that changes are saved and reflected in subsequent requests.
+
+**Description:**
+
+Verify that updates to existing records are saved and reflected in subsequent requests.
+
+**Steps:**
+
+1. Send a `POST` request to a valid endpoint. `POST /api/products`
+2. In the request body, set the field `name` to `Test` and the field `price` to `10`.
+3. Verify that the API returns the status code `201` and the correct data.
+4. Save the id of the product that was created in the previous step.
+5. Send a `GET` request to the product that was created in the previous step. `GET /api/products/{id}`
+6. Verify that the API returns the status code `200` and the correct data.
+7. Send a `PUT` request to the product that was created in the previous step. `PUT /api/products/{id}`
+8. In the request body, change the value of the field `name` to `Test 2`.
+9. Verify that the API returns the status code `200` and the correct data.
+10. Send a `GET` request to the product that was created in the previous step. `GET /api/products/{id}`
+11. Verify that the API returns the status code `200` and the correct data.
+12. Delete the product that was created in the previous step.
+
+**Expected Result:**
+
+The API returns the status code `200` and the correct data.
+
+**Actual Result:**
+
+TBD
+
+**Pass/Fail:**
+
+TBD
+
+
