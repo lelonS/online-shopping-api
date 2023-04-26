@@ -218,7 +218,7 @@ Verify that updates to existing records are saved and reflected in subsequent re
 **Steps:**
 
 1. Send a `POST` request to a valid endpoint. `POST /api/products`
-2. In the request body, set the field `name` to `Test` and the field `price` to `10`.
+2. In the request body, set `"name" = "Test"` and `"price" = 10`.
 3. Verify that the API returns the status code `201` and the correct data.
 4. Save the id of the product that was created in the previous step.
 5. Send a `GET` request to the product that was created in the previous step. `GET /api/products/{id}`
