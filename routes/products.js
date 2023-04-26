@@ -44,13 +44,11 @@ productsRouter.get('/', async (req, res) => {
   if (pageNr < 1) { pageNr = 1; }
 
   // Sorting
-  let sortDir = 1;
-  let sortParameterWithoutMinus = '_id';
-  if (typeof req.query.sort === 'string') {
-    const sortParameter = req.query.sort || '_id';
-    // If the sort parameter starts with a minus, the sort order is descending
-    sortDir = sortParameter.startsWith('-') ? -1 : 1;
-    sortParameterWithoutMinus = sortParameter.replace('-', '');
+  let sortString = '_id';
+  if (Array.isArray(req.query.sort)) {
+    sortString = req.query.sort.join(' ');
+  } else if (req.query.sort) {
+    sortString = req.query.sort;
   }
 
   // Get all products
@@ -58,7 +56,7 @@ productsRouter.get('/', async (req, res) => {
     .limit(pageSize)
     .skip(pageSize * (pageNr - 1))
     .populate('category')
-    .sort({ [sortParameterWithoutMinus]: sortDir })
+    .sort(sortString)
     .then((result) => {
       // Get successful
       res.set('page', pageNr);
