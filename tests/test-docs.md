@@ -157,11 +157,19 @@ Verify that the API can handle multiple concurrent requests.
 
 **Steps:**
 
+TBD
+
 **Expected Result:**
+
+TBD
 
 **Actual Result:**
 
+TBD
+
 **Pass/Fail:**
+
+TBD
 
 
 ### 8. Test if the API correctly handles different HTTP methods (GET, POST, PUT, DELETE) for each endpoint and returns appropriate status codes and responses for each method.
@@ -228,10 +236,31 @@ The API returns the status code `200` and the correct data.
 
 **Actual Result:**
 
+The API returns the status code `200` and the correct data.
+
+**Pass/Fail:**
+
+Pass
+
+
+### 10. Test the API’s performance under heavy load, simulating a large number of users making requests simultaneously.
+
+**Description:**
+
+Verify that the API can handle a large number of requests.
+
+**Steps:**
+
+TBD
+
+**Expected Result:**
+
+TBD
+
+**Actual Result:**
+
 TBD
 
 **Pass/Fail:**
 
 TBD
-
-
