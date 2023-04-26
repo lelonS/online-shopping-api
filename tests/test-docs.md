@@ -134,6 +134,7 @@ Verify that the API handles special characters and non-English text correctly, s
 1. Send a `POST` request to a valid endpoint. `POST /api/products`
 2. In the request body, include the special characters and non-English text `Test +- å\"'@😎я水` in the `name` field. Set the `price` field to `10`.
 3. Verify that the API returns the status code `201` and the correct `name`.
+4. Delete the product that was created in the previous step.
 
 **Expected Result:**
 
