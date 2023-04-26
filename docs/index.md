@@ -69,7 +69,7 @@ Example: `GET http://localhost:3000/api/products?sort=name`
 
 Example-2: `GET http://localhost:3000/api/products?sort=-name`
 
-You can sort the results by adding a `sort` parameter to the query string. The sort parameter should be the name of the field you want to sort by. Use a `-` before the field name to sort in descending order. You can not sort by fields in populated fields. You can only sort by one field at a time.
+You can sort the results by adding a `sort` parameter to the query string. The sort parameter should be the name of the field you want to sort by. Use a `-` before the field name to sort in descending order. You can not sort by nested fields referencing another collection.
 
 #### Search
 
