@@ -81,7 +81,7 @@ async function getSearchTerms(queries, schema) {
       } else if (path.instance === 'Array') {
         // Get search terms for the array
         const newQuery = key.split('.').slice(1).join('.') // Example: products.product.name -> product.name
-        const newKey = key.split('.').slice(0, -1).join('.') // Example: products.product.name -> products.product
+        const newKey = key.split('.').slice(0, 2).join('.') // Example: products.product.name -> products.product
 
         // Get the search term for the array
         const arraySearchTerm = await getSearchTerms({ [newQuery]: searchWord }, path.schema);
