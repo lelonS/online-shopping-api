@@ -2,6 +2,8 @@
 
 ### [Go to the API Documentation](/docs/index.md)
 
+### [Go to the Test Report](/tests/test-docs.md)
+
 ## Overview
 
 This is a RESTful API for an online shopping application. It is built with Node.js, Express, and MongoDB.
