@@ -3,8 +3,11 @@ import mongoose from 'mongoose';
 import mongodbURI from './secrets.js';
 import rateLimit from './utils/rate-limiting.js';
 
+const tokenRefillRate = 1; // per second
+const tokenBucketCapacity = 5; // max capacity
+
 const api = express();
-api.use(rateLimit(1, 5));
+api.use(rateLimit(tokenRefillRate, tokenBucketCapacity));
 api.use(express.json());
 
 
