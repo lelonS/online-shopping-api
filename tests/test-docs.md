@@ -436,3 +436,12 @@ Verify that the API returns the correct data when searching for a specific produ
 **Steps:**
 
 1. Send a `GET` request to a valid endpoint. `GET /api/products?name=like:ball`
+
+**Expected Result:**
+
+**Actual Result:**
+
+**Pass/Fail:**
+
+
+### 5. Verify that the API returns paginated results when a large number of records are requested.
