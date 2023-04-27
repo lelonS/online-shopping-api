@@ -435,13 +435,100 @@ Verify that the API returns the correct data when searching for a specific produ
 
 **Steps:**
 
-1. Send a `GET` request to a valid endpoint. `GET /api/products?name=like:ball`
+1. Send a `GET` request to a valid endpoint. `GET /api/products?name=like:ball&name=like:plastic`
+2. Verify that the name of every product contains both the words `ball` and `plastic`.
 
 **Expected Result:**
 
+Every product name contains both the words "ball" and "plastic"
+
 **Actual Result:**
+
+Every product name contains both the words "ball" and "plastic"
 
 **Pass/Fail:**
 
+Pass
 
 ### 5. Verify that the API returns paginated results when a large number of records are requested.
+
+**Description:**
+
+Verify that the API results for collections are paginated.
+
+**Steps:**
+
+1. Send a `GET` request to a valid collection. `GET /api/products?`
+2. Verify that the API returns 10 products or less.
+3. Send a `GET` request to a valid collection, with `page=2`. `GET /api/products?page=2`
+4. Verify that the API returns 10 products or less and that the products are different from the previous request.
+
+**Expected Result:**
+
+The API returns 10 products and page 2 is different from page 1.
+
+**Actual Result:**
+
+The API returns 10 products and page 2 is different from page 1.
+
+**Pass/Fail:**
+
+Pass
+
+
+### 6. Test if the API handles special characters and non-English text correctly in input data and returned responses using an automated testing tool.
+
+**Description:**
+
+Verify that the API handles special characters and non-English text correctly when creating a product.
+
+**Steps:**
+
+1. Send a `POST` request to a valid endpoint. `POST /api/products`
+2. In the request body, set the name to `Test +- å\"'@😎я水` and the price to `1.99`
+3. Verify that the API returns the status code `201` and the correct data.
+4. Search for the product. `GET /api/products?name=Test +- å\"'@😎я水`
+5. Verify that the API returns the status code `200` and the correct data.
+6. Delete the product. `DELETE /api/products/{id}`
+
+**Expected Result:**
+
+The API returns the status code `201` and the correct data when creating the product. The API returns the status code `200` and the correct data when searching for the product.
+
+**Actual Result:**
+
+The API returns the status code `201` and the correct data when creating the product. The API returns the status code `200` and the correct data when searching for the product.
+
+**Pass/Fail:**
+
+Pass
+
+
+### 7. Develop an automated test that sends concurrent requests to the API to ensure that it can handle multiple users and maintain data consistency.
+
+**Description:**
+
+Verify that only one product is created when sending concurrent requests to create the same product.
+
+**Steps:**
+
+1. Send a `POST` request to a valid endpoint. `POST /api/products`
+2. In the request body, set a name and a price.
+3. Send 2 concurrent requests to create the same product.
+4. Verify that only one of the requests returns the status code `201`.
+5. Delete the product. `DELETE /api/products/{id}`
+
+**Expected Result:**
+
+Only one of the requests returns the status code `201`.
+
+**Actual Result:**
+
+Only one of the requests returns the status code `201`.
+
+**Pass/Fail:**
+
+Pass
+
+
+
