@@ -22,7 +22,6 @@ function getLessThan(searchString) {
 }
 
 
-
 function getSearchTerm(query, key) {
 
   // If the query is an array there are multiple search terms
@@ -53,13 +52,7 @@ function getSearchTerm(query, key) {
 }
 
 
-
-
-
-
-
-
-
+// CATEGORIES
 async function getSearchTermsCategories(queries) {
   let allSearchTerms = [];
 
@@ -72,8 +65,7 @@ async function getSearchTermsCategories(queries) {
 }
 
 
-
-
+// PRODUCTS
 async function getSearchTermsProducts(queries) {
   let allSearchTerms = [];
 
@@ -98,12 +90,12 @@ async function getSearchTermsProducts(queries) {
     allSearchTerms = allSearchTerms.concat(getSearchTerm(queries['category'], 'category'));
   }
 
-  console.log(allSearchTerms);
   if (allSearchTerms.length === 0) { return {}; }
   return { $and: allSearchTerms };
 }
 
 
+// CUSTOMERS
 async function getSearchTermsCustomers(queries) {
   let allSearchTerms = [];
 
@@ -125,6 +117,33 @@ async function getSearchTermsCustomers(queries) {
 }
 
 
+// CARTS
+async function getSearchTermsCarts(queries) {
+  let allSearchTerms = await cartOrderHelper(queries);
+
+  if (queries['lastUpdate']) {
+    allSearchTerms = allSearchTerms.concat(getSearchTerm(queries['lastUpdate'], 'lastUpdate'));
+  }
+
+  if (allSearchTerms.length === 0) { return {}; }
+  return { $and: allSearchTerms };
+}
+
+
+// ORDERS
+async function getSearchTermsOrders(queries) {
+  let allSearchTerms = await cartOrderHelper(queries);
+
+  if (queries['createdAt']) {
+    allSearchTerms = allSearchTerms.concat(getSearchTerm(queries['createdAt'], 'createdAt'));
+  }
+
+  if (allSearchTerms.length === 0) { return {}; }
+  return { $and: allSearchTerms };
+}
+
+
+// HELPER FUNCTION FOR CARTS AND ORDERS
 async function cartOrderHelper(queries) {
   let allSearchTerms = [];
 
@@ -171,30 +190,6 @@ async function cartOrderHelper(queries) {
   }
 
   return allSearchTerms;
-}
-
-
-async function getSearchTermsCarts(queries) {
-  let allSearchTerms = await cartOrderHelper(queries);
-
-  if (queries['lastUpdate']) {
-    allSearchTerms = allSearchTerms.concat(getSearchTerm(queries['lastUpdate'], 'lastUpdate'));
-  }
-
-  if (allSearchTerms.length === 0) { return {}; }
-  return { $and: allSearchTerms };
-}
-
-
-async function getSearchTermsOrders(queries) {
-  let allSearchTerms = await cartOrderHelper(queries);
-
-  if (queries['createdAt']) {
-    allSearchTerms = allSearchTerms.concat(getSearchTerm(queries['createdAt'], 'createdAt'));
-  }
-
-  if (allSearchTerms.length === 0) { return {}; }
-  return { $and: allSearchTerms };
 }
 
 
