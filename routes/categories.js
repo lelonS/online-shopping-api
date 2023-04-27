@@ -1,7 +1,7 @@
 import Router from 'express';
 import mongoose, { Schema } from 'mongoose';
 import { errorResponse, notFoundResponse } from '../utils/error-messages.js';
-import { getSearchTerms } from '../utils/search-terms.js';
+import { getSearchTermsCategories } from '../utils/search-terms.js';
 
 
 const categoriesRouter = Router();
@@ -47,7 +47,7 @@ categoriesRouter.get('/', async (req, res) => {
   }
 
   // Get all categories
-  Categories.find(await getSearchTerms(req.query, categorySchema))
+  Categories.find(await getSearchTermsCategories(req.query))
     .limit(pageSize)
     .skip(pageSize * (pageNr - 1))
     .sort(sortString)
