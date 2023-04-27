@@ -153,23 +153,25 @@ Pass
 
 **Description:**
 
-Verify that the API can handle multiple concurrent requests.
+Verify that the API can handle multiple concurrent requests. If a field is unique, verify that the API does not create duplicate records.
 
 **Steps:**
 
-TBD
+1. Use `run collection` and run the the `7. Create test category` request with 2 iterations.
+2. Use `7. Get test categories` and verify that the API returns 1 category.
+3. Delete the category that was created.
 
 **Expected Result:**
 
-TBD
+Only 1 category is created since the name of the category is unique.
 
 **Actual Result:**
 
-TBD
+Only 1 category is created since the name of the category is unique.
 
 **Pass/Fail:**
 
-TBD
+Pass
 
 
 ### 8. Test if the API correctly handles different HTTP methods (GET, POST, PUT, DELETE) for each endpoint and returns appropriate status codes and responses for each method.
@@ -194,7 +196,7 @@ Verify that the API correctly handles different successful HTTP methods for each
 10. Verify that the API returns the status code `200` and the correct data.
 11. Send a `DELETE` request to the document that was created `step 1`. `DELETE /api/{collection}/{id}`
 12. Verify that the API returns the status code `200`.
-13. Repeat steps 1-12 for each collection.
+13. Repeat steps 1-12 for each collection to test.
 
 **Expected Result:**
 
@@ -251,24 +253,66 @@ Verify the API’s performance under heavy load.
 
 **Steps:**
 
-1. Send multiple `GET` requests to a valid endpoint. `GET /api/products`
-2. Verify that the API returns the status code `200` and the response time.
+1. Use `run collection` and run the the `10. Get products` request with 100 iterations.
+2. Verify that the API returns the status code `200` and a consistent response time.
 
 **Expected Result:**
 
-TBD
+The API returns the status code `200` and a consistent response time.
 
 **Actual Result:**
 
-TBD
+The API returns the status code `200` and a consistent response time.
 
 **Pass/Fail:**
 
-TBD
+Pass
 
 
 ### 11. Verify that the API can recover gracefully from failures, such as database connection issues without compromising data integrity.
 
+**Description:**
+
+Verify that the API can recover gracefully from failures, such as database connection issues without compromising data integrity.
+
+**Steps:**
+
+1. Remove IP address access from the MongoDB Atlas cluster.
+2. Send a `GET` request to a valid endpoint. `GET /api/products`
+3. Verify that the API returns the status code `500` and the correct error message.
+
+**Expected Result:**
+
+The API returns the status code `500` and the correct error message.
+
+**Actual Result:**
+
+The API returns the status code `500` and the message `"connection <monitor> to 16.170.174.41:27017 closed"`
+
+**Pass/Fail:**
+
+Pass. However, it takes a long time for the API to return the error message. It would be better if the API returned the error message quicker.
+
+
 ### 12. Test the API’s ability to handle edge cases, such as requests with missing or invalid parameters, and ensure that appropriate error messages are returned.
+
+**Description:**
+
+Verify that the API can handle edge cases, such as requests with missing or invalid parameters, missing or invalid properties in the request body in `POST` and `PUT` requests.
+
+**Steps:**
+
+1. Send a `POST` request to a valid endpoint. `POST /api/products`
+2. In the request body, do not set the required field `name` and set the price to a letter `"price": "a"`
+3. Verify that the API returns the status code `400` and the correct error message.
+4. Send a `PUT` request to a valid endpoint. `PUT /api/products/{id}`
+5. In the request body, set the name to null `"name": null` and set the price to a letter `"price": "a"`
+6. Verify that the API returns the status code `400` and the correct error message.
+7. Send a `GET` request to a valid endpoint searching in an invalid field that. `GET /api/products?notAField=no`
+8. Verify that the API returns all the products and the status code `200`.
+9. Send a `GET` request to a valid endpoint searching for an invalid value. `GET /api/products?price=gt:a`
+10. Verify that the API returns all the products and the status code `200`.
+11. Send a `GET` request to an invalid id. `GET /api/products/a`
+12. Verify that the API returns the status code `400` and the correct error message.
 
 ### 13. Verify that the API correctly implements rate limiting or throttling mechanisms to prevent abuse or excessive use of resources.
