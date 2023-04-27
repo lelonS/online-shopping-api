@@ -328,3 +328,111 @@ The API returns the status code `400` and the correct error message.
 Pass
 
 ### 13. Verify that the API correctly implements rate limiting or throttling mechanisms to prevent abuse or excessive use of resources.
+
+**Description:**
+
+Verify that the API correctly implements rate limiting after ~100 requests.
+
+**Steps:**
+
+1. Use `run collection` and run the the `13. Test rate limiting` request with 200 iterations
+2. Observe the status code of the requests.
+3. After ~100 requests, the status code should be `429`.
+
+**Expected Result:**
+
+After a bit more than 100 requests, the status code should be `429`.
+
+**Actual Result:**
+
+After a bit more than 100 requests, the status code is `429`.
+
+**Pass/Fail:**
+
+Pass
+
+
+## Automated Tests
+
+### 1. Validate that the API returns the correct HTTP status code (e.g., 200 OK) for a successful GET request.
+
+**Description:**
+
+Verify that the API returns the correct HTTP status code `200` for a successful `GET` request.
+
+**Steps:**
+
+1. Send a `GET` request to a valid endpoint. `GET /api/products`
+2. Verify that the API returns the status code `200`.
+
+**Expected Result:**
+
+The API returns the status code `200`.
+
+**Actual Result:**
+
+The API returns the status code `200`.
+
+**Pass/Fail:**
+
+Pass
+
+
+### 2. Verify that the API returns the expected data format (e.g., JSON, XML) in the response.
+
+**Description:**
+
+Verify that the API returns the expected data format `JSON` in the response.
+
+**Steps:**
+
+1. Send a `GET` request to a valid endpoint. `GET /api/products`
+2. Verify that the reponse header `Content-Type` includes `application/json;`.
+
+**Expected Result:**
+
+The reponse header `Content-Type` includes `application/json;`.
+
+**Actual Result:**
+
+The reponse header `Content-Type` includes `application/json;`.
+
+**Pass/Fail:**
+
+Pass
+
+
+### 3. Ensure that the API returns the correct HTTP status code (e.g., 400 Bad Request) for an invalid requests.
+
+**Description:**
+
+Verify that the API returns status code `400` when sending a `GET` request to a non-existing id.
+
+**Steps:**
+
+1. Send a `POST` request to a valid endpoint. `POST /api/products`
+2. Do not send a request body.
+3. Verify that the API returns the status code `400`.
+
+**Expected Result:**
+
+The API returns the status code `400`.
+
+**Actual Result:**
+
+The API returns the status code `400`.
+
+**Pass/Fail:**
+
+Pass
+
+
+### 4. Create an automated test that sends a request with specific filters or search criteria and checks if the API returns the correct data.
+
+**Description:**
+
+Verify that the API returns the correct data when searching for a specific product.
+
+**Steps:**
+
+1. Send a `GET` request to a valid endpoint. `GET /api/products?name=like:ball`
