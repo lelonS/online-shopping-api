@@ -18,6 +18,8 @@ export function errorResponse(error) {
   // Validation error
   if (error.name === 'ValidationError') {
     return { response: { message: error.message }, status: 400 }
+  } else if (error.name === 'CastError') {
+    return { response: { message: error.message }, status: 400 }
   }
 
   // Duplicate key error
