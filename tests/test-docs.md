@@ -315,4 +315,16 @@ Verify that the API can handle edge cases, such as requests with missing or inva
 11. Send a `GET` request to an invalid id. `GET /api/products/a`
 12. Verify that the API returns the status code `400` and the correct error message.
 
+**Expected Result:**
+
+The API returns the status code `400` and the correct error message.
+
+**Actual Result:**
+
+The API returns the status code `400` and the correct error message.
+
+**Pass/Fail:**
+
+Pass
+
 ### 13. Verify that the API correctly implements rate limiting or throttling mechanisms to prevent abuse or excessive use of resources.
