@@ -107,7 +107,7 @@ Example: `GET http://localhost:3000/api/products?category.name=like:toy`
 |description|String|Search by description|
 |price|Number|Search by price|
 |category.name|String|Search by category name|
-|category._id|String|Search by category id. (only full id)|
+|category|String|Search by category id. (only full id)|
 
 **Customers**
 
@@ -129,14 +129,14 @@ Example: `GET http://localhost:3000/api/carts?products.product.name=like:ball`
 
 |Parameter|Type|Description|
 |---|---|---|
+|customer|String|Search by customer id. (only full id)|
 |customer.fullName|String|Search for customer full name|
 |customer.email|String|Search for customer email|
-|customer.password|String|Search for customer password|
 |products.product.name|String|Search for product name|
 |products.product.description|String|Search for product description|
 |products.product.price|Number|Search for product price|
-|products.quantity|Number|Search for product quantity|
 |products.product.category|String|Search by pruduct category**id**|
+|products.quantity|Number|Search for product quantity|
 |lastUpdate|Date|Search for cart by last update date `(YYYY-MM-DD)`|
 
 **Orders**
@@ -147,14 +147,14 @@ Example: `GET http://localhost:3000/api/orders?createdAt=gt:2019-01-01`
 
 |Parameter|Type|Description|
 |---|---|---|
-|customer.fullName|String|Search by customer full name|
-|customer.email|String|Search by customer email|
-|customer.password|String|Search by customer password|
-|products.product.name|String|Search by product name|
-|products.product.description|String|Search by product description|
-|products.product.price|Number|Search by product price|
-|products.quantity|Number|Search product quantity|
+|customer|String|Search by customer id. (only full id)|
+|customer.fullName|String|Search for customer full name|
+|customer.email|String|Search for customer email|
+|products.product.name|String|Search for product name|
+|products.product.description|String|Search for product description|
+|products.product.price|Number|Search for product price|
 |products.product.category|String|Search by pruduct category**id**|
+|products.quantity|Number|Search for product quantity|
 |createdAt|Date|Search by last update date `(YYYY-MM-DD)`|
 
 
