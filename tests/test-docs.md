@@ -531,4 +531,55 @@ Only one of the requests returns the status code `201`.
 Pass
 
 
+### 8. Create an automated test and test if the API correctly handles different HTTP methods (GET, POST, PUT, DELETE) for each endpoint and returns appropriate status codes and responses for each method.
 
+**Description:**
+
+Verify that the API correctly handles different HTTP methods.
+
+**Steps:**
+
+1. Send a `GET` request to a valid endpoint. `GET /api/products`
+2. Verify that the API returns the status code `200` and the correct data.
+3. Send a `POST` request to a valid endpoint. `POST /api/products`
+4. Verify that the API returns the status code `201` and the correct data.
+5. Send a `GET` request to the id. `GET /api/products/{id}`
+6. Verify that the API returns the status code `200` and the correct data.
+7. Send a `PUT` request to the id. `PUT /api/products/{id}`
+8. Verify that the API returns the status code `200` and the correct data.
+9. Send a `DELETE` request to the id. `DELETE /api/products/{id}`
+10. Verify that the API returns the status code `200`.
+
+**Expected Result:**
+
+The API returns the correct status codes and data for each method.
+
+**Actual Result:**
+
+The API returns the correct status codes and data for each method.
+
+**Pass/Fail:**
+
+Pass
+
+
+### 9. Write an automated test to check if the API correctly handles updates to existing records, ensuring that changes are saved and reflected in subsequent requests.
+
+**SAME AS ABOVE??????**
+
+
+### 10. Design an automated performance test that simulates a large number of users making requests simultaneously to check the API’s performance under heavy load.
+
+**TODO**
+
+### 11. Create an automated test that verifies the API can recover gracefully from failures, such as database connection issues or third-party service outages, without compromising data integrity.
+
+**TODO**
+
+### 12. Develop an automated test to handle edge cases, such as requests with missing or invalid parameters, and ensure that appropriate error messages are returned.
+
+**TODO**
+
+### 13. Write an automated test to verify that the API correctly implements any rate limiting or throttling mechanisms to prevent abuse or excessive use of resources.
+
+**TODO**
