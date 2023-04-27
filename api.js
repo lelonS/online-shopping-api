@@ -7,8 +7,9 @@ const tokenRefillRate = 1; // per second
 const tokenBucketCapacity = 5; // max capacity
 
 const api = express();
-api.use(rateLimit(tokenRefillRate, tokenBucketCapacity));
+
 api.use(express.json());
+api.use(rateLimit(tokenRefillRate, tokenBucketCapacity));
 
 
 api.listen(3000, () => {
