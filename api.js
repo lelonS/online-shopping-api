@@ -1,8 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import mongodbURI from './secrets.js';
+import rateLimit from './utils/rate-limiting.js';
 
 const api = express();
+api.use(rateLimit(1, 5));
 api.use(express.json());
 
 
