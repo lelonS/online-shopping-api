@@ -221,14 +221,14 @@ Verify that updates to existing records are saved and reflected in subsequent re
 2. In the request body, set `"name": "Test"` and `"price": 10`.
 3. Verify that the API returns the status code `201` and the correct data.
 4. Save the id of the product that was created in the previous step.
-5. Send a `GET` request to the product that was created in the previous step. `GET /api/products/{id}`
+5. Send a `GET` request to the product that was created in step 3. `GET /api/products/{id}`
 6. Verify that the API returns the status code `200` and the correct data.
-7. Send a `PUT` request to the product that was created in the previous step. `PUT /api/products/{id}`
+7. Send a `PUT` request to the product that was created in step 3. `PUT /api/products/{id}`
 8. In the request body, change the value of the field `name` to `Test 2`.
 9. Verify that the API returns the status code `200` and the correct data.
-10. Send a `GET` request to the product that was created in the previous step. `GET /api/products/{id}`
+10. Send a `GET` request to the product that was created in step 3. `GET /api/products/{id}`
 11. Verify that the API returns the status code `200` and the correct data.
-12. Delete the product that was created in the previous step.
+12. Delete the product that was created in step 3.
 
 **Expected Result:**
 
