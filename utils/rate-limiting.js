@@ -10,8 +10,9 @@ class TokenBucket {
   refill() {
     // Refill the bucket since lastFilled using the fill rate
     const now = Date.now();
-    // Delta in seconds
+    // Time since lastFilled in seconds
     const delta = (now - this.lastFilled) / 1000;
+    // New tokens to add to the bucket
     const newTokens = delta * this.fillPerSecond;
     this.tokens = Math.min(this.capacity, this.tokens + newTokens);
     this.lastFilled = now;
