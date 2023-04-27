@@ -25,6 +25,7 @@ The API returns the status code `200`.
 
 Pass
 
+---
 
 ### 2. Check if the API returns the expected data format (e.g., JSON, XML) in the response.
 
@@ -49,6 +50,7 @@ The API returns the data format `json`.
 
 Pass
 
+---
 
 ### 3. Ensure that the API returns the correct HTTP status code (e.g., 400 Bad Request) for an invalid request.
 
@@ -74,6 +76,7 @@ The API returns the status code `400`.
 
 Pass
 
+---
 
 ### 4. Test if the API returns the correct data when querying with specific filters or search criteria.
 
@@ -98,6 +101,7 @@ All products returned by the API contain the word `ball` in the name.
 
 Pass
 
+---
 
 ### 5. Verify that the API returns paginated results when a large number of records are requested.
 
@@ -122,6 +126,7 @@ The API returns 10 products.
 
 Pass
 
+---
 
 ### 6. Check if the API handles special characters and non-English text correctly in input data and returned responses.
 
@@ -148,6 +153,7 @@ The API returns the status code `201` and `"name": "Test +- å\"'@😎я水"`.
 
 Pass
 
+---
 
 ### 7. Test the API’s response when sending concurrent requests to ensure that it can handle multiple users and maintain data consistency.
 
@@ -173,6 +179,7 @@ Only 1 category is created since the name of the category is unique.
 
 Pass
 
+---
 
 ### 8. Test if the API correctly handles different HTTP methods (GET, POST, PUT, DELETE) for each endpoint and returns appropriate status codes and responses for each method.
 
@@ -210,6 +217,7 @@ The API returns status code `201` for `POST`. Status code `200` for `GET`, `PUT`
 
 Pass
 
+---
 
 ### 9. Check if the API correctly handles updates to existing records, ensuring that changes are saved and reflected in subsequent requests.
 
@@ -244,6 +252,7 @@ The API returns the status code `200` and the correct data.
 
 Pass
 
+---
 
 ### 10. Test the API’s performance under heavy load, simulating a large number of users making requests simultaneously.
 
@@ -268,6 +277,7 @@ The API returns the status code `200` and a consistent response time.
 
 Pass
 
+---
 
 ### 11. Verify that the API can recover gracefully from failures, such as database connection issues without compromising data integrity.
 
@@ -293,6 +303,7 @@ The API returns the status code `500` and the message `"connection <monitor> to 
 
 Pass. However, it takes a long time for the API to return the error message. It would be better if the API returned the error message quicker.
 
+---
 
 ### 12. Test the API’s ability to handle edge cases, such as requests with missing or invalid parameters, and ensure that appropriate error messages are returned.
 
@@ -327,6 +338,8 @@ The API returns the status code `400` and the correct error message.
 
 Pass
 
+---
+
 ### 13. Verify that the API correctly implements rate limiting or throttling mechanisms to prevent abuse or excessive use of resources.
 
 **Description:**
@@ -351,6 +364,7 @@ After a bit more than 100 requests, the status code is `429`.
 
 Pass
 
+---
 
 ## Automated Tests
 
@@ -377,6 +391,7 @@ The API returns the status code `200`.
 
 Pass
 
+---
 
 ### 2. Verify that the API returns the expected data format (e.g., JSON, XML) in the response.
 
@@ -401,6 +416,7 @@ The reponse header `Content-Type` includes `application/json;`.
 
 Pass
 
+---
 
 ### 3. Ensure that the API returns the correct HTTP status code (e.g., 400 Bad Request) for an invalid requests.
 
@@ -426,6 +442,7 @@ The API returns the status code `400`.
 
 Pass
 
+---
 
 ### 4. Create an automated test that sends a request with specific filters or search criteria and checks if the API returns the correct data.
 
@@ -449,6 +466,8 @@ Every product name contains both the words "ball" and "plastic"
 **Pass/Fail:**
 
 Pass
+
+---
 
 ### 5. Verify that the API returns paginated results when a large number of records are requested.
 
@@ -475,6 +494,7 @@ The API returns 10 products and page 2 is different from page 1.
 
 Pass
 
+---
 
 ### 6. Test if the API handles special characters and non-English text correctly in input data and returned responses using an automated testing tool.
 
@@ -503,6 +523,7 @@ The API returns the status code `201` and the correct data when creating the pro
 
 Pass
 
+---
 
 ### 7. Develop an automated test that sends concurrent requests to the API to ensure that it can handle multiple users and maintain data consistency.
 
@@ -530,6 +551,7 @@ Only one of the requests returns the status code `201`.
 
 Pass
 
+---
 
 ### 8. Create an automated test and test if the API correctly handles different HTTP methods (GET, POST, PUT, DELETE) for each endpoint and returns appropriate status codes and responses for each method.
 
@@ -562,6 +584,7 @@ The API returns the correct status codes and data for each method.
 
 Pass
 
+---
 
 ### 9. Write an automated test to check if the API correctly handles updates to existing records, ensuring that changes are saved and reflected in subsequent requests.
 
