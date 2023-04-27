@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 import mongodbURI from './secrets.js';
 import rateLimit from './utils/rate-limiting.js';
 
-const tokenRefillRate = 1; // per second
-const tokenBucketCapacity = 5; // max capacity
+const tokenRefillRate = 2; // per second
+const tokenBucketCapacity = 100; // max capacity
 
 const api = express();
 

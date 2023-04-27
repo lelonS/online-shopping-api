@@ -529,4 +529,9 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ## Rate Limiting and Throttling
 
-*If the API enforces rate limiting or throttling, explain the limitations and how developers can monitor their usage to avoid being blocked or receiving error responses.*
+The API uses token bucket algorithm to limit the number of requests that can be made to the API. The bucket capacity is 100 tokens and the refill rate is 2 tokens per second.
+
+**1 request = 1 token**
+
+If the limit is reached, the API will respond with a `429 Too Many Requests` status code.
+
