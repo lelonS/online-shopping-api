@@ -306,7 +306,7 @@ The API returns the status code `500` and the message `"connection <monitor> to 
 
 **Pass/Fail:**
 
-Pass. However, it takes a long time for the API to return the error message. It would be better if the API returned the error message quicker.
+Pass. However, it takes a long time (~30s) for the API to return the error message. It would be better if the API returned the error message quicker.
 
 ---
 
@@ -322,7 +322,7 @@ Verify that the API can handle edge cases, such as requests with missing or inva
 2. In the request body, do not set the required field `name` and set the price to a letter `"price": "a"`
 3. Verify that the API returns the status code `400` and the correct error message.
 4. Send a `PUT` request to a valid endpoint. `PUT /api/products/{id}`
-5. In the request body, set the name to null `"name": null` and set the price to a letter `"price": "a"`
+5. In the request body, set the name to null `"name": null`
 6. Verify that the API returns the status code `400` and the correct error message.
 7. Send a `GET` request to a valid endpoint searching in an invalid field that. `GET /api/products?notAField=no`
 8. Verify that the API returns all the products and the status code `200`.
@@ -353,7 +353,7 @@ Verify that the API correctly implements rate limiting after ~15 requests.
 
 **Steps:**
 
-1. Use `run collection` and run the the `13. Test rate limiting` request with 200 iterations
+1. Use `run collection` and run the the `13. Test rate limiting` request with 50 iterations
 2. Observe the status code of the requests.
 3. After ~15 requests, the status code should be `429`.
 
@@ -408,14 +408,15 @@ Verify that the API returns the expected data format `JSON` in the response.
 
 1. Send a `GET` request to a valid endpoint. `GET /api/products`
 2. Verify that the reponse header `Content-Type` includes `application/json;`.
+3. Verify that the reponse body is a valid JSON.
 
 **Expected Result:**
 
-The reponse header `Content-Type` includes `application/json;`.
+The reponse header `Content-Type` includes `application/json;` and the reponse body is a valid JSON.
 
 **Actual Result:**
 
-The reponse header `Content-Type` includes `application/json;`.
+The reponse header `Content-Type` includes `application/json;` and the reponse body is a valid JSON.
 
 **Pass/Fail:**
 
@@ -662,12 +663,89 @@ Pass.
 
 ### 11. Create an automated test that verifies the API can recover gracefully from failures, such as database connection issues or third-party service outages, without compromising data integrity.
 
-**TODO**
+**Description:**
+
+Verify that the API can recover gracefully from database connection loss.
+
+**Steps:**
+
+1. Send a `GET` request to a valid endpoint. `GET /api/products`
+2. Verify that the API returns the status code `200` and the correct data.
+3. Stop the database.
+4. Send a `GET` request to a valid endpoint. `GET /api/products`
+5. Verify that the API returns the status code `500` and the correct error message.
+6. Start the database.
+7. Send a `GET` request to a valid endpoint. `GET /api/products`
+8. Verify that the API returns the status code `200` and the correct data.
+
+**Expected Result:**
+
+The API recovers gracefully from database connection loss.
+
+**Actual Result:**
+
+The API recovers gracefully from database connection loss.
+
+**Pass/Fail:**
+
+Pass
 
 ### 12. Develop an automated test to handle edge cases, such as requests with missing or invalid parameters, and ensure that appropriate error messages are returned.
 
-**TODO**
+**Description:**
+
+Verify that the API returns the correct error messages when sending requests with missing or invalid parameters.
+
+**Steps:**
+
+1. Send a `POST` request to a valid endpoint. `POST /api/products`
+2. In the request body, do not set the required field `name` and set the price to a letter `"price": "a"`
+3. Verify that the API returns the status code `400` and the correct error message.
+4. Send a `PUT` request to a valid endpoint. `PUT /api/products/{id}`
+5. In the request body, set the name to null `"name": null`
+6. Verify that the API returns the status code `400` and the correct error message.
+7. Send a `GET` request to a valid endpoint searching in an invalid field that. `GET /api/products?notAField=no`
+8. Verify that the API returns all the products and the status code `200`.
+9. Send a `GET` request to a valid endpoint searching for an invalid value. `GET /api/products?price=gt:a`
+10. Verify that the API returns all the products and the status code `200`.
+11. Send a `GET` request to an invalid id. `GET /api/products/a`
+12. Verify that the API returns the status code `400` and the correct error message.
+
+**Expected Result:**
+
+The API returns the correct error messages when sending requests with missing or invalid parameters.
+
+**Actual Result:**
+
+The API returns the correct error messages when sending requests with missing or invalid parameters.
+
+**Pass/Fail:**
+
+Pass
+
+---
 
 ### 13. Write an automated test to verify that the API correctly implements any rate limiting or throttling mechanisms to prevent abuse or excessive use of resources.
 
-**TODO**
+**Description:**
+
+Verify that the API correctly implements rate limiting.
+
+**Steps:**
+
+1. Send a `GET` request to a valid endpoint. `GET /api/products`
+2. Verify that the API returns the status code `200`
+3. Send 50 concurrent requests to the same endpoint.
+4. Verify that some of the requests return the status code `429`.
+
+**Expected Result:**
+
+Some of the requests return the status code `429`.
+
+**Actual Result:**
+
+Some of the requests return the status code `429`.
+
+**Pass/Fail:**
+
+Pass
