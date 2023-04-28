@@ -656,7 +656,7 @@ The response time is less than 200 ms.
 
 Pass. 
 
-*Note*: Without rate limiting, the response time increases after 15 requests.
+*Note*: Without rate limiting, the response time increases after 15 concurrent requests.
 
 ---
 
