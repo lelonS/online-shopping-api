@@ -344,21 +344,21 @@ Pass
 
 **Description:**
 
-Verify that the API correctly implements rate limiting after ~100 requests.
+Verify that the API correctly implements rate limiting after ~15 requests.
 
 **Steps:**
 
 1. Use `run collection` and run the the `13. Test rate limiting` request with 200 iterations
 2. Observe the status code of the requests.
-3. After ~100 requests, the status code should be `429`.
+3. After ~15 requests, the status code should be `429`.
 
 **Expected Result:**
 
-After a bit more than 100 requests, the status code should be `429`.
+After a bit more than 15 requests, the status code should be `429`.
 
 **Actual Result:**
 
-After a bit more than 100 requests, the status code is `429`.
+After a bit more than 15 requests, the status code is `429`.
 
 **Pass/Fail:**
 
@@ -588,12 +588,70 @@ Pass
 
 ### 9. Write an automated test to check if the API correctly handles updates to existing records, ensuring that changes are saved and reflected in subsequent requests.
 
-**SAME AS ABOVE??????**
+**Description:**
 
+Verify that the API correctly handles updates to existing records.
+
+**Steps:**
+
+1. Send a `POST` request to a valid endpoint. `POST /api/products`
+2. In the request body, set the name to `Test auto 9` and the price to `10`
+3. Verify that the API returns the status code `201` and the correct data.
+4. Send a `GET` request to the id. `GET /api/products/{id}`
+5. Verify that the API returns the status code `200` and the correct data.
+6. Search for the product. `GET /api/products?name=Test auto 9`
+7. Verify that the API returns the status code `200` and the correct data.
+8. Send a `PUT` request to the id. `PUT /api/products/{id}`
+9. In the request body, set the name to `Test auto 9 updated` and the price to `20`
+10. Do steps 4-7 again.
+11. Delete the product. `DELETE /api/products/{id}`
+
+**Expected Result:**
+
+Updates to existing records are saved and reflected in subsequent requests.
+
+**Actual Result:**
+
+Updates to existing records are saved and reflected in subsequent requests.
+
+**Pass/Fail:**
+
+Pass
+
+---
 
 ### 10. Design an automated performance test that simulates a large number of users making requests simultaneously to check the API’s performance under heavy load.
 
-**TODO**
+**Description:**
+
+Verify that the response time is consistent when sending a large number of requests. 
+
+*Note*: The API gets rate limited after ~15 requests.
+
+**Steps:**
+
+1. Send a `GET` request to a valid endpoint. `GET /api/products`
+2. Verify that the API returns the status code `200`
+3. Check the response time.
+4. Send 50 concurrent requests to the same endpoint.
+5. Verify that the API returns the status code `200`
+6. Check the response time.
+
+**Expected Result:**
+
+The response time is less than 200 ms.
+
+**Actual Result:**
+
+The response time is less than 200 ms.
+
+**Pass/Fail:**
+
+Pass. 
+
+*Note*: Without rate limiting, the response time increases after 15 requests.
+
+---
 
 ### 11. Create an automated test that verifies the API can recover gracefully from failures, such as database connection issues or third-party service outages, without compromising data integrity.
 
