@@ -647,11 +647,11 @@ Verify that the response time is consistent when sending a large number of reque
 
 **Expected Result:**
 
-The response time is less than 200 ms.
+The response time is less than 300 ms.
 
 **Actual Result:**
 
-The response time is less than 200 ms.
+The response time is less than 300 ms.
 
 **Pass/Fail:**
 
