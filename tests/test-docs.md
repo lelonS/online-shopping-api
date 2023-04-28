@@ -1,5 +1,8 @@
 # Testing
 
+* [Manual Testing](#manual-testing)
+* [Automated Testing](#automated-testing)
+
 ## Manual Testing
 
 ### 1. Verify that the API returns the correct HTTP status code (e.g., 200 OK) for a successful GET request.
@@ -372,6 +375,8 @@ Pass
 ---
 
 ## Automated Tests
+
+When using `run collection` the rate limiting causes some of the tests fail. 
 
 ### 1. Validate that the API returns the correct HTTP status code (e.g., 200 OK) for a successful GET request.
 
