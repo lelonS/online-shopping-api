@@ -1,7 +1,7 @@
 # Testing
 
 * [Manual Testing](#manual-testing)
-* [Automated Testing](#automated-testing)
+* [Automated Testing](#automated-tests)
 
 ## Manual Testing
 
