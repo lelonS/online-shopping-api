@@ -287,9 +287,14 @@ Verify that the API can recover gracefully from failures, such as database conne
 
 **Steps:**
 
-1. Remove IP address access from the MongoDB Atlas cluster.
-2. Send a `GET` request to a valid endpoint. `GET /api/products`
-3. Verify that the API returns the status code `500` and the correct error message.
+1. Send a a `GET` request to a valid endpoint. `GET /api/products`
+2. Verify that the API returns the status code `200` and the correct data.
+3. Stop the MongoDB server.
+4. Send a `GET` request to a valid endpoint. `GET /api/products`
+5. Verify that the API returns the status code `500` and the correct error message.
+6. Start the MongoDB server.
+7. Send a `GET` request to a valid endpoint. `GET /api/products`
+8. Verify that the API returns the status code `200` and the correct data.
 
 **Expected Result:**
 
