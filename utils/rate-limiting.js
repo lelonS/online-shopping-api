@@ -37,6 +37,7 @@ function rateLimit(fillPerSecond, capacity) {
   const bucket = new TokenBucket(capacity, fillPerSecond);
   // Return a middleware function
   return (req, res, next) => {
+    // console.log(bucket.tokens);
     // If we can take a token from the bucket, call next()
     if (bucket.take()) {
       next();
