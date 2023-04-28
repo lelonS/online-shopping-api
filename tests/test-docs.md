@@ -507,9 +507,11 @@ Verify that the API handles special characters and non-English text correctly wh
 1. Send a `POST` request to a valid endpoint. `POST /api/products`
 2. In the request body, set the name to `Test +- å\"'@😎я水` and the price to `1.99`
 3. Verify that the API returns the status code `201` and the correct data.
-4. Search for the product. `GET /api/products?name=Test +- å\"'@😎я水`
+4. Search for the product. `GET /api/products?name=Test %2B- å\"'@😎я水`
 5. Verify that the API returns the status code `200` and the correct data.
 6. Delete the product. `DELETE /api/products/{id}`
+
+*Note: `+` is encoded as `%2B`*
 
 **Expected Result:**
 
