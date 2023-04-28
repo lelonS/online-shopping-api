@@ -667,6 +667,8 @@ Pass.
 
 Verify that the API can recover gracefully from database connection loss.
 
+*Note: This test requires manual intervention.*
+
 **Steps:**
 
 1. Send a `GET` request to a valid endpoint. `GET /api/products`
@@ -689,6 +691,8 @@ The API recovers gracefully from database connection loss.
 **Pass/Fail:**
 
 Pass
+
+---
 
 ### 12. Develop an automated test to handle edge cases, such as requests with missing or invalid parameters, and ensure that appropriate error messages are returned.
 
