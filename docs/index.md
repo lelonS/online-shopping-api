@@ -303,7 +303,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 |name|String|The name of the product|
 |description|String|The description of the product|
 |price|Number|The price of the product|
-|category|Object|The category of the product ([See Categories](#categories-1))|
+|category|Object|The category of the product ([See Categories](#categories))|
 |__v|Number|The version of the product|
 
 ### Customers
@@ -325,8 +325,8 @@ Only `GET` requests populate fields with data from other collections. For exampl
 |Property|Type|Description|
 |---|---|---|
 |_id|String|The id of the cart|
-|customer|Object|The customer of the cart ([See Customers](#customers-1))|
-|products|Array|The products in the cart and quantity. The array includes objects with the properties `{product: Object, quantity: 2}`. ([See Products](#products-1) for `product`)|
+|customer|Object|The customer of the cart ([See Customers](#customers))|
+|products|Array|The products in the cart and quantity. The array includes objects with the properties `{product: Object, quantity: 2}`. ([See Products](#products) for `product`)|
 |updatedAt|Date|The date the cart was last updated|
 |__v|Number|The version of the cart|
 
@@ -337,9 +337,9 @@ Only `GET` requests populate fields with data from other collections. For exampl
 |Property|Type|Description|
 |---|---|---|
 |_id|String|The id of the order|
-|customer|Object|The customer of the order ([See Customers](#customers-1))|
+|customer|Object|The customer of the order ([See Customers](#customers))|
 |shippingAddress|String|The shipping address of the customer|
-|products|Array|The products in the order and quantity. The array includes objects with the properties `{product: Object, quantity: 2}`. ([See Products](#products-1) for `product`)|
+|products|Array|The products in the order and quantity. The array includes objects with the properties `{product: Object, quantity: 2}`. ([See Products](#products) for `product`)|
 |createdAt|Date|The date the order was created|
 |__v|Number|The version of the order|
 
