@@ -10,6 +10,8 @@ const operators = {
 
 
 function getLike(searchString) {
+  // Escape special characters
+  searchString = searchString.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
   return { $regex: searchString, $options: 'i' };
 }
 
@@ -68,7 +70,7 @@ async function getSearchTermsCategories(queries) {
 // PRODUCTS
 async function getSearchTermsProducts(queries) {
   let allSearchTerms = [];
-
+  console.log(queries);
   if (queries['name']) {
     allSearchTerms = allSearchTerms.concat(getSearchTerm(queries['name'], 'name'));
   }
@@ -90,6 +92,7 @@ async function getSearchTermsProducts(queries) {
     allSearchTerms = allSearchTerms.concat(getSearchTerm(queries['category'], 'category'));
   }
 
+  console.log(allSearchTerms);
   if (allSearchTerms.length === 0) { return {}; }
   return { $and: allSearchTerms };
 }
