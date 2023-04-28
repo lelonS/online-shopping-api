@@ -529,7 +529,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ## Rate Limiting and Throttling
 
-The API uses token bucket algorithm to limit the number of requests that can be made to the API. The bucket capacity is 100 tokens and the refill rate is 2 tokens per second.
+The API uses token bucket algorithm to limit the number of requests that can be made to the API. The bucket capacity is 15 tokens and the refill rate is 2 tokens per second.
 
 **1 request = 1 token**
 

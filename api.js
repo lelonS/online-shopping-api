@@ -4,7 +4,7 @@ import mongodbURI from './secrets.js';
 import rateLimit from './utils/rate-limiting.js';
 
 const tokenRefillRate = 2; // per second
-const tokenBucketCapacity = 100; // max capacity
+const tokenBucketCapacity = 15; // max capacity
 
 const api = express();
 
