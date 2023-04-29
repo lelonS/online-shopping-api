@@ -16,7 +16,7 @@ function getMockCustomers() {
       password: faker.internet.password()
     };
 
-    // Check if the customer already exists
+    // Check if the customer already exists (infinite loop risk)
     const existingCustomer = customers.find(c => c.email === customer.email);
     if (!existingCustomer) {
       customers.push(customer);

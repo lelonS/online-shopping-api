@@ -10,7 +10,7 @@ function getMockCategories() {
       name: faker.commerce.department()
     };
 
-    // Check if the category already exists
+    // Check if the category already exists (infinite loop risk)
     const existingCategory = categories.find(c => c.name === category.name);
     if (!existingCategory) {
       categories.push(category);

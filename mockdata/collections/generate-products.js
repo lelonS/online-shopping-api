@@ -14,7 +14,7 @@ function getMockProducts(categories) {
       category: categories[Math.floor(Math.random() * categories.length)]
     };
 
-    // Check if the product already exists
+    // Check if the product already exists (infinite loop risk)
     const existingProduct = products.find(p => p.name === product.name);
     if (!existingProduct) {
       products.push(product);
