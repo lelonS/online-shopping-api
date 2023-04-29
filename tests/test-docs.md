@@ -1,7 +1,37 @@
 # Testing
 
+Tests are ran in postman. The tests are located in two collections; One for the manual tests and one for the automated tests.
+
 * [Manual Testing](#manual-testing)
+  * [1. Successful GET request](#1-verify-that-the-api-returns-the-correct-http-status-code-eg-200-ok-for-a-successful-get-request)
+  * [2. Data format](#2-check-if-the-api-returns-the-expected-data-format-eg-json-xml-in-the-response)
+  * [3. Invalid request](#3-ensure-that-the-api-returns-the-correct-http-status-code-eg-400-bad-request-for-an-invalid-request)
+  * [4. Search criteria](#4-test-if-the-api-returns-the-correct-data-when-querying-with-specific-filters-or-search-criteria)
+  * [5. Paginated results](#5-verify-that-the-api-returns-paginated-results-when-a-large-number-of-records-are-requested)
+  * [6. Special characters](#6-check-if-the-api-handles-special-characters-and-non-english-text-correctly-in-input-data-and-returned-responses)
+  * [7. Concurrent requests data consistency](#7-test-the-apis-response-when-sending-concurrent-requests-to-ensure-that-it-can-handle-multiple-users-and-maintain-data-consistency)
+  * [8. HTTP methods](#8-test-if-the-api-correctly-handles-different-http-methods-get-post-put-delete-for-each-endpoint-and-returns-appropriate-status-codes-and-responses-for-each-method)
+  * [9. Updates to existing records](#9-check-if-the-api-correctly-handles-updates-to-existing-records-ensuring-that-changes-are-saved-and-reflected-in-subsequent-requests)
+  * [10. Performance under heavy load](#10-test-the-apis-performance-under-heavy-load-simulating-a-large-number-of-users-making-requests-simultaneously)
+  * [11. Database connection issues](#11-verify-that-the-api-can-recover-gracefully-from-failures-such-as-database-connection-issues-without-compromising-data-integrity)
+  * [12. Edge cases](#12-test-the-apis-ability-to-handle-edge-cases-such-as-requests-with-missing-or-invalid-parameters-and-ensure-that-appropriate-error-messages-are-returned)
+  * [13. Rate limiting](#13-verify-that-the-api-correctly-implements-rate-limiting-or-throttling-mechanisms-to-prevent-abuse-or-excessive-use-of-resources)
+
+
 * [Automated Testing](#automated-tests)
+  * [1. Successful GET request](#1-validate-that-the-api-returns-the-correct-http-status-code-eg-200-ok-for-a-successful-get-request)
+  * [2. Data format](#2-verify-that-the-api-returns-the-expected-data-format-eg-json-xml-in-the-response)
+  * [3. Invalid request](#3-ensure-that-the-api-returns-the-correct-http-status-code-eg-400-bad-request-for-an-invalid-requests)
+  * [4. Search criteria](#4-create-an-automated-test-that-sends-a-request-with-specific-filters-or-search-criteria-and-checks-if-the-api-returns-the-correct-data)
+  * [5. Paginated results](#5-verify-that-the-api-returns-paginated-results-when-a-large-number-of-records-are-requested-1)
+  * [6. Special characters](#6-test-if-the-api-handles-special-characters-and-non-english-text-correctly-in-input-data-and-returned-responses-using-an-automated-testing-tool)
+  * [7. Concurrent requests data consistency](#7-develop-an-automated-test-that-sends-concurrent-requests-to-the-api-to-ensure-that-it-can-handle-multiple-users-and-maintain-data-consistency)
+  * [8. HTTP methods](#8-create-an-automated-test-and-test-if-the-api-correctly-handles-different-http-methods-get-post-put-delete-for-each-endpoint-and-returns-appropriate-status-codes-and-responses-for-each-method)
+  * [9. Updates to existing records](#9-write-an-automated-test-to-check-if-the-api-correctly-handles-updates-to-existing-records-ensuring-that-changes-are-saved-and-reflected-in-subsequent-requests)
+  * [10. Performance under heavy load](#10-design-an-automated-performance-test-that-simulates-a-large-number-of-users-making-requests-simultaneously-to-check-the-apis-performance-under-heavy-load)
+  * [11. Database connection issues](#11-create-an-automated-test-that-verifies-the-api-can-recover-gracefully-from-failures-such-as-database-connection-issues-or-third-party-service-outages-without-compromising-data-integrity)
+  * [12. Edge cases](#12-develop-an-automated-test-to-handle-edge-cases-such-as-requests-with-missing-or-invalid-parameters-and-ensure-that-appropriate-error-messages-are-returned)
+  * [13. Rate limiting](#13-write-an-automated-test-to-verify-that-the-api-correctly-implements-any-rate-limiting-or-throttling-mechanisms-to-prevent-abuse-or-excessive-use-of-resources)
 
 ## Manual Testing
 

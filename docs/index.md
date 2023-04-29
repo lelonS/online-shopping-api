@@ -15,7 +15,6 @@ Quick reference
 ---
 
 
-
 ## Authentication and Authorization
 
 To access the API, you must have a mongoDB connection string. To use your connection string you put it in the `secrets.js` file. The easiest way to do this is to remove the `.template` part from [secrets.js.template](../secrets.js.template).
