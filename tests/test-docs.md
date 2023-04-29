@@ -135,22 +135,22 @@ Pass
 
 **Description:**
 
-Verify that the API handles special characters and non-English text correctly, such as `å\"'@😎я水`.
+Verify that the API handles special characters and non-English text correctly, such as `å"'@😎я水`.
 
 **Steps:**
 
 1. Send a `POST` request to a valid endpoint. `POST /api/products`
-2. In the request body, include the special characters and non-English text `Test +- å\"'@😎я水` in the `name` field. Set the `price` field to `10`.
+2. In the request body, include the special characters and non-English text `"name": "Test +- å\"'@😎я水"`. Set the `price` field to `10`.
 3. Verify that the API returns the status code `201` and the correct `name`.
 4. Delete the product that was created in the previous step.
 
 **Expected Result:**
 
-The API returns the status code `201` and `"name": "Test +- å\"'@😎я水"`.
+The API returns the status code `201` and `"name": "Test +- å"'@😎я水"`.
 
 **Actual Result:**
 
-The API returns the status code `201` and `"name": "Test +- å\"'@😎я水"`.
+The API returns the status code `201` and `"name": "Test +- å"'@😎я水"`.
 
 **Pass/Fail:**
 
@@ -516,9 +516,9 @@ Verify that the API handles special characters and non-English text correctly wh
 **Steps:**
 
 1. Send a `POST` request to a valid endpoint. `POST /api/products`
-2. In the request body, set the name to `Test +- å\"'@😎я水` and the price to `1.99`
+2. In the request body, set the name to `"name": "Test +- å\"'@😎я水"` and the price to `1.99`
 3. Verify that the API returns the status code `201` and the correct data.
-4. Search for the product. `GET /api/products?name=Test %2B- å\"'@😎я水`
+4. Search for the product. `GET /api/products?name=Test %2B- å"'@😎я水`
 5. Verify that the API returns the status code `200` and the correct data.
 6. Delete the product. `DELETE /api/products/{id}`
 
