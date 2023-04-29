@@ -26,5 +26,12 @@ export function errorResponse(error) {
   if (error.code === 11000) {
     return { response: { message: error.message }, status: 409 }
   }
-  return { response: { message: error.message }, status: 500 }
+
+  // Error message exists
+  if (error.message) {
+    return { response: { message: error.message }, status: 500 }
+  } else {
+    // No error message exists
+    return { response: { message: 'Internal server error' }, status: 500 }
+  }
 }
