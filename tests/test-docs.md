@@ -4,7 +4,7 @@ Tests are ran in postman. The tests are located in two collections; One for the 
 
 Only some of the manual tests has example responses to use with the mock server.
 
-To change the base url, change the `url` Environment variable in the collection. 
+Use the `url` environment variable to change the base url for the tests. The default value is `http://localhost:3000`.
 
 
 * [Manual Testing](#manual-testing)
