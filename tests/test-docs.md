@@ -2,6 +2,11 @@
 
 Tests are ran in postman. The tests are located in two collections; One for the manual tests and one for the automated tests.
 
+Only some of the manual tests has example responses to use with the mock server.
+
+To change the base url, change the `url` Environment variable in the collection. 
+
+
 * [Manual Testing](#manual-testing)
   * [1. Successful GET request](#1-verify-that-the-api-returns-the-correct-http-status-code-eg-200-ok-for-a-successful-get-request)
   * [2. Data format](#2-check-if-the-api-returns-the-expected-data-format-eg-json-xml-in-the-response)
