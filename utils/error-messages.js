@@ -8,8 +8,8 @@ export function notFoundResponse() {
 export function errorResponse(error) {
 
   // Log the error to the console
-  console.log('errorResponse() called\n', error, '\n');
-  console.log('Error JSON\n', JSON.stringify(error, null, 2), '\n');
+  // console.log('errorResponse() called\n', error, '\n');
+  // console.log('Error JSON\n', JSON.stringify(error, null, 2), '\n');
 
   // Append the error to the error log
   fs.appendFileSync('./utils/error.log', JSON.stringify(error, null, 2) + '\n');
