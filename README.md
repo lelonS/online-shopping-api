@@ -6,7 +6,7 @@
 
 ## Overview
 
-This is a RESTful API for an online shopping application. It is built with Node.js, Express, and MongoDB.
+This is a RESTful API for an online shopping application. It is built with Node.js, Express, Mongoose and MongoDB.
 
 The purpose of this API is to provide a backend for an online shopping application. The API provides endpoints to create, read, update, and delete products, categories, customers, carts, and orders.
 
