@@ -1,5 +1,7 @@
 # Testing
 
+[Postman workspace](https://www.postman.com/lively-meadow-27836/workspace/online-shopping-pvt22-public)
+
 Tests are ran in postman. The tests are located in two collections; One for the manual tests and one for the automated tests.
 
 Only some of the manual tests has example responses to use with the mock server.
