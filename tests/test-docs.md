@@ -71,7 +71,7 @@ Pass
 
 **Description:**
 
-Verify that the API returns in json format in the response.
+Verify that the response is in JSON format.
 
 **Steps:**
 
@@ -96,7 +96,7 @@ Pass
 
 **Description:**
 
-Verify that the API returns the status code `400` a `POST` request with a missing required field.
+Verify that the API returns the status code `400` to a `POST` request with a missing required field.
 
 **Steps:**
 
@@ -122,7 +122,7 @@ Pass
 
 **Description:**
 
-Verify that the API returns the correct data when searching for a specific for a specific product.
+Verify that the API returns the correct data when searching for a product.
 
 **Steps:**
 
@@ -199,7 +199,7 @@ Pass
 
 **Description:**
 
-Verify that the API can handle multiple concurrent requests. If a field is unique, verify that the API does not create duplicate records.
+If a field is unique, verify that the API does not create duplicate records when multiple users send concurrent requests.
 
 **Steps:**
 
@@ -444,7 +444,7 @@ Pass
 
 **Description:**
 
-Verify that the API returns the expected data format `JSON` in the response.
+Verify that the reponse is in JSON format.
 
 **Steps:**
 
@@ -470,7 +470,7 @@ Pass
 
 **Description:**
 
-Verify that the API returns status code `400` when sending a `GET` request to a non-existing id.
+Verify that the API returns status code `400` for an invalid request.
 
 **Steps:**
 
@@ -496,7 +496,7 @@ Pass
 
 **Description:**
 
-Verify that the API returns the correct data when searching for a specific product.
+Verify that the API returns the correct data when searching for products.
 
 **Steps:**
 
@@ -548,7 +548,7 @@ Pass
 
 **Description:**
 
-Verify that the API handles special characters and non-English text correctly when creating a product.
+Verify that the API handles special characters and non-English text correctly when creating a product and searching for it.
 
 **Steps:**
 
