@@ -22,15 +22,15 @@ To access the API, you must have a mongoDB connection string. To use your connec
 
 ## Endpoint Structure
 
-**Base URL:** `https://localhost:3000/api`
+**Base URL:** `https://localhost:3000`
 
 **Endpoints:**
 
-* `GET /{collection}` - Get all documents in a collection
-* `GET /{collection}/{id}` - Get a single document by ID
-* `POST /{collection}` - Create a new document
-* `PUT /{collection}/{id}` - Update a document
-* `DELETE /{collection}/{id}` - Delete a document
+* `GET /api/{collection}` - Get all documents in a collection
+* `GET /api/{collection}/{id}` - Get a single document by ID
+* `POST /api/{collection}` - Create a new document
+* `PUT /api/{collection}/{id}` - Update a document
+* `DELETE /api/{collection}/{id}` - Delete a document
 
 **Collections:**
 
@@ -45,7 +45,7 @@ To access the API, you must have a mongoDB connection string. To use your connec
 
 ### GET requests to collection
 
-`GET http://localhost:3000/api/{collection}?page={page}&sort={sort}`
+`GET /api/{collection}?page={page}&sort={sort}`
 
 **General parameters**
 
@@ -54,28 +54,28 @@ To access the API, you must have a mongoDB connection string. To use your connec
 |page|Number|The page number|1|
 |sort|String|The field to sort by|_id|
 
-To use multiple parameters, separate them with an ampersand (`&`). For example: `GET http://localhost:3000/api/products?page=2&sort=name`
+To use multiple parameters, separate them with an ampersand (`&`). For example: `GET /api/products?page=2&sort=name`
 
 
 **Pagination**
 
-Example: `GET http://localhost:3000/api/products?page=2`
+Example: `GET /api/products?page=2`
 
 When you send a `GET` request to a collection, you can paginate the results by adding a `page` parameter to the query string. The page size is 10 documents per page.
 
 **Sorting**
 
-Example: `GET http://localhost:3000/api/products?sort=name`
+Example: `GET /api/products?sort=name`
 
-Example-2: `GET http://localhost:3000/api/products?sort=-name`
+Example-2: `GET /api/products?sort=-name`
 
 You can sort the results by adding a `sort` parameter to the query string. The sort parameter should be the name of the field you want to sort by. Use a `-` before the field name to sort in descending order. You can not sort by proprties in an array.
 
 #### Search
 
-Example: `GET http://localhost:3000/api/products?name=product`
+Example: `GET /api/products?name=product`
 
-Example-2: `GET http://localhost:3000/api/products?price=gt:100&price=lt:200`
+Example-2: `GET /api/products?price=gt:100&price=lt:200`
 
 |Operator|Description|
 |---|---|
@@ -87,9 +87,9 @@ When using no operator, the search will be done using exact match.
 
 **Categories**
 
-`GET http://localhost:3000/api/categories?{parameter}={value}`
+`GET /api/categories?{parameter}={value}`
 
-Example: `GET http://localhost:3000/api/categories?name=like:toy`
+Example: `GET /api/categories?name=like:toy`
 
 |Parameter|Type|Description|
 |---|---|---|
@@ -97,9 +97,9 @@ Example: `GET http://localhost:3000/api/categories?name=like:toy`
 
 **Products**
 
-`GET http://localhost:3000/api/products?{parameter}={value}`
+`GET /api/products?{parameter}={value}`
 
-Example: `GET http://localhost:3000/api/products?category.name=like:toy`
+Example: `GET /api/products?category.name=like:toy`
 
 |Parameter|Type|Description|
 |---|---|---|
@@ -111,9 +111,9 @@ Example: `GET http://localhost:3000/api/products?category.name=like:toy`
 
 **Customers**
 
-`GET http://localhost:3000/api/customers?{parameter}={value}`
+`GET /api/customers?{parameter}={value}`
 
-Example: `GET http://localhost:3000/api/customers?fullName=like:john`
+Example: `GET /api/customers?fullName=like:john`
 
 |Parameter|Type|Description|
 |---|---|---|
@@ -123,9 +123,9 @@ Example: `GET http://localhost:3000/api/customers?fullName=like:john`
 
 **Carts**
 
-`GET http://localhost:3000/api/carts?{parameter}={value}`
+`GET /api/carts?{parameter}={value}`
 
-Example: `GET http://localhost:3000/api/carts?products.product.name=like:ball`
+Example: `GET /api/carts?products.product.name=like:ball`
 
 |Parameter|Type|Description|
 |---|---|---|
@@ -141,9 +141,9 @@ Example: `GET http://localhost:3000/api/carts?products.product.name=like:ball`
 
 **Orders**
 
-`GET http://localhost:3000/api/orders`
+`GET /api/orders`
 
-Example: `GET http://localhost:3000/api/orders?createdAt=gt:2019-01-01`
+Example: `GET /api/orders?createdAt=gt:2019-01-01`
 
 |Parameter|Type|Description|
 |---|---|---|
@@ -168,7 +168,7 @@ Both `POST` and `PUT` requests are validated.
 
 **Categories**
 
-`POST http://localhost:3000/api/categories`
+`POST /api/categories`
 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
@@ -177,7 +177,7 @@ Both `POST` and `PUT` requests are validated.
 
 **Products**
 
-`POST http://localhost:3000/api/products`
+`POST /api/products`
 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
@@ -188,7 +188,7 @@ Both `POST` and `PUT` requests are validated.
 
 **Customers**
 
-`POST http://localhost:3000/api/customers`
+`POST /api/customers`
 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
@@ -198,7 +198,7 @@ Both `POST` and `PUT` requests are validated.
 
 **Carts**
 
-`POST http://localhost:3000/api/carts`
+`POST /api/carts`
 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
@@ -207,7 +207,7 @@ Both `POST` and `PUT` requests are validated.
 
 **Orders**
 
-`POST http://localhost:3000/api/orders`
+`POST /api/orders`
 
 |Property|Type|Description|Required|Unique|Validation|
 |---|---|---|---|---|---|
@@ -224,7 +224,7 @@ None
 
 ### Post to orders
 
-`POST http://localhost:3000/api/orders`
+`POST /api/orders`
 
 **Request Body:**
 
@@ -241,15 +241,15 @@ None
 
 ### Get all orders
 
-`GET http://localhost:3000/api/orders`
+`GET /api/orders`
 
 ### Get a specific order
 
-`GET http://localhost:3000/api/orders/644110ee8bad225fc5643efc`
+`GET /api/orders/644110ee8bad225fc5643efc`
 
 ### Update a specific order
 
-`PUT http://localhost:3000/api/orders/644110ee8bad225fc5643efc`
+`PUT /api/orders/644110ee8bad225fc5643efc`
 
 Only the fields you send will be updated. In this example, only the `shippingAddress` field will be updated.
 
@@ -263,7 +263,7 @@ Only the fields you send will be updated. In this example, only the `shippingAdd
 
 ### Delete a specific order
 
-`DELETE http://localhost:3000/api/orders/644110ee8bad225fc5643efc`
+`DELETE /api/orders/644110ee8bad225fc5643efc`
 
 ## Response Structure
 
@@ -285,7 +285,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Categories
 
-`GET http://localhost:3000/api/categories/{id}`
+`GET /api/categories/{id}`
 
 |Property|Type|Description|
 |---|---|---|
@@ -295,7 +295,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Products
 
-`GET http://localhost:3000/api/products/{id}`
+`GET /api/products/{id}`
 
 |Property|Type|Description|
 |---|---|---|
@@ -308,7 +308,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Customers
 
-`GET http://localhost:3000/api/customers/{id}`
+`GET /api/customers/{id}`
 
 |Property|Type|Description|
 |---|---|---|
@@ -320,7 +320,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Carts
 
-`GET http://localhost:3000/api/carts/{id}`
+`GET /api/carts/{id}`
 
 |Property|Type|Description|
 |---|---|---|
@@ -332,7 +332,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Orders
 
-`GET http://localhost:3000/api/orders/{id}`
+`GET /api/orders/{id}`
 
 |Property|Type|Description|
 |---|---|---|
@@ -347,7 +347,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Success POST response (Status code: 201)
 
-`POST http://localhost:3000/api/orders`
+`POST /api/orders`
 
 **Request body**
 
@@ -388,7 +388,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Validation Error POST response (Status code: 400)
 
-`POST http://localhost:3000/api/orders`
+`POST /api/orders`
 
 **Request body**
 
@@ -414,7 +414,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Success GET response (Status code: 200)
 
-`GET http://localhost:3000/api/orders/6442838b4d02de6678d52314`
+`GET /api/orders/6442838b4d02de6678d52314`
 
 **Response body**
 
@@ -450,7 +450,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Not Found Error GET response (Status code: 404)
 
-`GET http://localhost:3000/api/orders/aaaaaaaaaaaaaaaaaaaaaaaa`
+`GET /api/orders/aaaaaaaaaaaaaaaaaaaaaaaa`
 
 * The order with the id `aaaaaaaaaaaaaaaaaaaaaaaa` does not exist.
 
@@ -464,7 +464,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Success PUT response (Status code: 200)
 
-`PUT http://localhost:3000/api/orders/6442838b4d02de6678d52314`
+`PUT /api/orders/6442838b4d02de6678d52314`
 
 **Request body**
 
@@ -495,7 +495,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 
 ### Success DELETE response (Status code: 200)
 
-`DELETE http://localhost:3000/api/orders/6442838b4d02de6678d52314`
+`DELETE /api/orders/6442838b4d02de6678d52314`
 
 **Response body**
 
