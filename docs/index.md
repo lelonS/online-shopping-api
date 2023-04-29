@@ -526,6 +526,7 @@ Only `GET` requests populate fields with data from other collections. For exampl
 |Validation error|400|The request body is not valid|Trying to create a document with a required field missing|
 |Cast error|400|The request body is not valid|Trying to create a document with an invalid id|
 |Duplicate key error|409|The request body is not valid|Trying to create a document with a unique field that already exists|
+|Ratelimit error|429|Too many requests|Requesting the API too many times (see [Rate Limiting and Throttling](#rate-limiting-and-throttling))|
 
 ## Rate Limiting and Throttling
 
